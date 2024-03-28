@@ -3,6 +3,7 @@ import { Input } from "./components/UI/Input";
 import { FakingSettings } from "./types/HermitowskiFejkomat.types";
 import { defaultSettings, fejkomatyFields } from "./components/DefaultValues";
 import { FejkomatKeys } from "./types/FejkomatValuesKeys.types";
+import { Output } from "./components/Output";
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [fejkomatSettings, setFejkomatSettings] =
@@ -20,10 +21,13 @@ function App() {
   };
 
   return (
-    <div className="App bg-slate-500 text-red-700 p-4">
-      {fejkomatyFields.map((field) => (
-        <Input valueToSet={setNewSettings} field={field} key={field} />
-      ))}
+    <div className="grid grid-cols-2 bg-slate-100 text-red-700 p-4 w-full">
+      <div>
+        {fejkomatyFields.map((field) => (
+          <Input valueToSet={setNewSettings} field={field} key={field} />
+        ))}
+      </div>
+      <Output code={fejkomatSettings} />
     </div>
   );
 }

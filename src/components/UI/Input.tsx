@@ -42,35 +42,38 @@ export const Input = ({
 
   const inputChangeHandler = (
     whatField: FejkomatKeys,
-    e: ChangeEvent<HTMLInputElement>
+    e: ChangeEvent<HTMLInputElement> // todo: change directly to value?
   ): void => {
     const isCheckbox = e.target.type === "checkbox";
     const value = isCheckbox ? e.target.checked : e.target.value;
 
-    console.log("Field: ", whatField, "Value: ", value);
+    //todo: add validation for coords and other fields.
 
+    console.log("Field: ", whatField, "Value: ", value);
     setValue((prev: any) => (isCheckbox ? value : value));
     valueToSet(whatField, value);
   };
 
   return (
     <>
-      {smallInputs.has(whatField) && (
-        <SmallInput
-          whatField={whatField}
-          value={value}
-          inputChangeHandler={inputChangeHandler}
-        />
-      )}
-      {booleanInputs.has(whatField) && (
-        <BooleanInput
-          whatField={whatField}
-          value={value === "true"} // Assuming value is a string that you're converting to boolean
-          inputChangeHandler={inputChangeHandler} // Adjust based on your needs
-        />
-      )}
-      <div>
-        Input above: <b>{whatField}</b>
+      <div className="flex  align-middle justify-between bg-slate-200 m-1 p-2 border-red-300">
+        <span>
+          Input: <b>{whatField}</b>
+        </span>
+        {smallInputs.has(whatField) && (
+          <SmallInput
+            whatField={whatField}
+            value={value}
+            inputChangeHandler={inputChangeHandler}
+          />
+        )}
+        {booleanInputs.has(whatField) && (
+          <BooleanInput
+            whatField={whatField}
+            value={value}
+            inputChangeHandler={inputChangeHandler}
+          />
+        )}
       </div>
     </>
   );

@@ -53,36 +53,38 @@ export type BlockingGlobal = {
   name: string;
 };
 
+export type Coords = [number, number];
+
 export interface FakingSettings {
-  safeguard: Troops;
-  troops_templates: Troops[];
-  fill_exact: boolean; // TODO: change to fill_all (?)
+  safeguard?: Troops;
+  troops_templates?: Troops[];
+  fill_exact?: boolean; // TODO?: change to fill_all (?)
 
-  fill_troops: string; //'spear,sword,axe,archer,spy,light,marcher,heavy,ram,catapult',
+  fill_troops?: string; //'spear,sword,axe,archer,spy,light,marcher,heavy,ram,catapult',
 
-  coords: string;
-  players: string;
-  player_ids: string;
-  allies: string;
-  ally_tags: string;
-  ally_ids: string;
+  coords?: string;
+  players?: string;
+  player_ids?: string;
+  allies?: string;
+  ally_tags?: string;
+  ally_ids?: string;
 
-  exclude_players: string;
-  exclude_player_ids: string;
-  exclude_allies: string;
-  exclude_ally_tags: string;
-  exclude_ally_ids: string;
+  exclude_players?: string;
+  exclude_player_ids?: string;
+  exclude_allies?: string;
+  exclude_ally_tags?: string;
+  exclude_ally_ids?: string;
 
-  include_barbarians: boolean;
-  boundaries_circle: BoundaryCircle[];
-  boundaries_box: BoundaryBox[];
+  include_barbarians?: boolean;
+  boundaries_circle?: BoundaryCircle[];
+  boundaries_box?: BoundaryBox[];
 
-  blocking_enabled: boolean;
-  blocking_local: BlockingLocal;
-  blocking_global: BlockingGlobal[];
+  blocking_enabled?: boolean;
+  blocking_local?: BlockingLocal;
+  blocking_global?: BlockingGlobal[];
 
-  skip_night_bonus: boolean;
-  date_ranges: DateRange[];
+  skip_night_bonus?: boolean;
+  date_ranges?: DateRange[];
 
   changing_village_enabled: boolean;
 }
