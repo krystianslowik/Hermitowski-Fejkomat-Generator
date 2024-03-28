@@ -1,16 +1,17 @@
 import { ChangeEvent, useState } from "react";
 import { type FejkomatKeys } from "../../types/FejkomatValuesKeys.types";
-import {
-  isBlockingGlobal,
-  isBlockingLocal,
-  isBoundaryBox,
-  isBoundaryCircle,
-  isDateRange,
-  isDateRangePart,
-  isFakingResult,
-  isTarget,
-  isTroops,
-} from "../Validations";
+import { useI18n } from "../store/i18n";
+// import {
+//   isBlockingGlobal,
+//   isBlockingLocal,
+//   isBoundaryBox,
+//   isBoundaryCircle,
+//   isDateRange,
+//   isDateRangePart,
+//   isFakingResult,
+//   isTarget,
+//   isTroops,
+// } from "../Validations"; // TODO? dodać walidacjeeeeee
 import { SmallInput } from "./Inputs/Small";
 import { BooleanInput } from "./Inputs/Boolean";
 
@@ -23,6 +24,8 @@ export const Input = ({
   valueToSet,
 }: InputProps): JSX.Element => {
   const [value, setValue] = useState<any>("");
+  const { i18n } = useI18n();
+
   const smallInputs = new Set([
     "allies",
     "players",
@@ -58,7 +61,7 @@ export const Input = ({
     <>
       <div className="flex  align-middle justify-between bg-slate-200 m-1 p-2 border-red-300">
         <span>
-          Input: <b>{whatField}</b>
+          Input: <b>{i18n(whatField)}</b>
         </span>
         {smallInputs.has(whatField) && (
           <SmallInput

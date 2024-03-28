@@ -1,5 +1,6 @@
 import { type ChangeEvent, type ReactElement } from "react";
 import { type FejkomatKeys } from "../../../types/FejkomatValuesKeys.types";
+import { useI18n } from "../../store/i18n";
 type SmallInputProps = {
   whatField: FejkomatKeys;
   value: string;
@@ -13,6 +14,7 @@ export const SmallInput = ({
   value,
   inputChangeHandler,
 }: SmallInputProps): ReactElement => {
+  const { i18n, setLanguage } = useI18n();
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     inputChangeHandler(whatField, e);
   };
@@ -23,7 +25,7 @@ export const SmallInput = ({
       name={whatField}
       type="text"
       value={value}
-      placeholder={whatField}
+      placeholder={i18n(whatField)}
       onChange={(whatField) => handleChange(whatField)}
     />
   );
