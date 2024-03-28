@@ -40,7 +40,6 @@ export const Input = ({
       } else if (value.trim() !== value) {
         setError(i18n("errorLeadingTrailingSpaces"));
       } else {
-        // Regex adjusted to allow -, _, and . characters and removed space before comma check
         const regex =
           /^[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*(,\s*[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*)*$/;
         if (!regex.test(value)) {
@@ -62,7 +61,7 @@ export const Input = ({
     const newValue = isCheckbox ? e.target.checked : e.target.value;
 
     console.log("Field: ", whatField, "Value: ", newValue);
-    setValue(newValue); // Simplified this line as `prev` was not being used
+    setValue(newValue);
     valueToSet(whatField, newValue);
   };
 
