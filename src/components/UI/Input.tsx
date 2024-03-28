@@ -1,29 +1,21 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { type FejkomatKeys } from "../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../store/i18n";
-// import {
-//   isBlockingGlobal,
-//   isBlockingLocal,
-//   isBoundaryBox,
-//   isBoundaryCircle,
-//   isDateRange,
-//   isDateRangePart,
-//   isFakingResult,
-//   isTarget,
-//   isTroops,
-// } from "../Validations"; // TODO? dodać walidacjeeeeee
 import { SmallInput } from "./Inputs/Small";
 import { BooleanInput } from "./Inputs/Boolean";
+import InputError from "./Error";
 
 type InputProps = {
   valueToSet: (key: FejkomatKeys, value: any) => void;
   field: FejkomatKeys;
 };
+
 export const Input = ({
   field: whatField,
   valueToSet,
 }: InputProps): JSX.Element => {
   const [value, setValue] = useState<any>("");
+  const [error, setError] = useState<string>("");
   const { i18n } = useI18n();
 
   const smallInputs = new Set([
@@ -37,31 +29,48 @@ export const Input = ({
 
   const booleanInputs = new Set([
     "fill_exact",
-    "fill_troops",
     "include_barbarians",
     "skip_night_bonus",
     "changing_village_enabled",
   ]);
+  useEffect(() => {
+    const validateTextInput = (value: string | boolean): void => {
+      if (typeof value === "boolean" || value === "") {
+        setError("");
+      } else if (value.trim() !== value) {
+        setError(i18n("errorLeadingTrailingSpaces"));
+      } else {
+        // Regex adjusted to allow -, _, and . characters and removed space before comma check
+        const regex =
+          /^[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*(,\s*[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*)*$/;
+        if (!regex.test(value)) {
+          setError(i18n("errorInvalidInputFormat"));
+        } else {
+          setError("");
+        }
+      }
+    };
+
+    validateTextInput(value);
+  }, [i18n, value]);
 
   const inputChangeHandler = (
     whatField: FejkomatKeys,
-    e: ChangeEvent<HTMLInputElement> // todo: change directly to value?
+    e: ChangeEvent<HTMLInputElement>
   ): void => {
     const isCheckbox = e.target.type === "checkbox";
-    const value = isCheckbox ? e.target.checked : e.target.value;
+    const newValue = isCheckbox ? e.target.checked : e.target.value;
 
-    //todo: add validation for coords and other fields.
-
-    console.log("Field: ", whatField, "Value: ", value);
-    setValue((prev: any) => (isCheckbox ? value : value));
-    valueToSet(whatField, value);
+    console.log("Field: ", whatField, "Value: ", newValue);
+    setValue(newValue); // Simplified this line as `prev` was not being used
+    valueToSet(whatField, newValue);
   };
 
   return (
     <>
-      <div className="flex  align-middle justify-between bg-slate-200 m-1 p-2 border-red-300">
+      <div className="flex items-center justify-between bg-slate-200 m-1 p-2 border-red-300">
         <span>
-          Input: <b>{i18n(whatField)}</b>
+          <b>{i18n(whatField)}</b>
         </span>
         {smallInputs.has(whatField) && (
           <SmallInput
@@ -73,11 +82,12 @@ export const Input = ({
         {booleanInputs.has(whatField) && (
           <BooleanInput
             whatField={whatField}
-            value={value}
+            value={typeof value === "boolean" ? value : false}
             inputChangeHandler={inputChangeHandler}
           />
         )}
       </div>
+      {error && <InputError errorMessage={error} />}
     </>
   );
 };

@@ -14,7 +14,8 @@ export const SmallInput = ({
   value,
   inputChangeHandler,
 }: SmallInputProps): ReactElement => {
-  const { i18n, setLanguage } = useI18n();
+  const { i18n } = useI18n();
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     inputChangeHandler(whatField, e);
   };

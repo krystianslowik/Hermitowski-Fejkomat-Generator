@@ -9,7 +9,7 @@ const translations: TranslationMap = {
   safeguard: { en: "Safeguard", pl: "Ochrona" },
   troops_templates: { en: "Troops Templates", pl: "Szablony Wojsk" },
   fill_exact: { en: "Fill Exact", pl: "Dokładne Wypełnienie" },
-  players: { en: "Players", pl: "Gracze" },
+  players: { en: "Players (nick)", pl: "Gracze (nick)" },
   fill_troops: { en: "Fill troops", pl: "Uzupełnij wojsko" },
   coords: { en: "Coords", pl: "Koordynaty" },
   player_ids: { en: "Players (ID)", pl: "Gracze (ID)" },
@@ -35,6 +35,18 @@ const translations: TranslationMap = {
   changing_village_enabled: {
     en: "Changing Village Enabled",
     pl: "Zmiana wioski włączona",
+  },
+  errorEmptyInput: {
+    en: "Input cannot be empty.",
+    pl: "Pole nie może być puste.",
+  },
+  errorLeadingTrailingSpaces: {
+    en: "Remove leading or trailing spaces.",
+    pl: "Usuń spacje na początku lub na końcu.",
+  },
+  errorInvalidInputFormat: {
+    en: "Ensure your input is in the correct format ('name1, name2, name3'). Maybe comma on the end?",
+    pl: "Upewnij się, że twój wpis jest w poprawnym formacie ('nazwa1, nazwa2, nazwa3'). Moze przecinek na końcu?",
   },
 };
 
