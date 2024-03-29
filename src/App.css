@@ -1,0 +1,42 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.1s ease-out;
+}
+
+.toggle-checkbox {
+  left: 0;
+  transition: left 0.1s ease-in-out; /* Add transition for smooth animation */
+}
+
+.toggle-checkbox:checked {
+  left: 40%;
+  border-color: #52ab74;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #68d391;
+}
+
+.toggle-label {
+  background-color: #cbd5e0;
+}
+
+/* Add keyframe animation for moving */
+@keyframes moveSwitch {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 50%;
+    transform: translateX(50%);
+  }
+}

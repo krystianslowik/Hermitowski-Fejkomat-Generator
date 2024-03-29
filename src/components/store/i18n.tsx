@@ -45,8 +45,72 @@ const translations: TranslationMap = {
     pl: "Usuń spacje na początku lub na końcu.",
   },
   errorInvalidInputFormat: {
-    en: "Ensure your input is in the correct format ('name1, name2, name3'). Maybe comma on the end?",
-    pl: "Upewnij się, że twój wpis jest w poprawnym formacie ('nazwa1, nazwa2, nazwa3'). Moze przecinek na końcu?",
+    en: "Wrong format. Unwanted comma?",
+    pl: "Błędny format. Niechciany przecinek?",
+  },
+  safeguard_description: {
+    en: "Safeguard is a feature that provides protection or security measures.",
+    pl: "Zabezpieczenie to funkcja zapewniająca ochronę lub środki bezpieczeństwa.",
+  },
+  troops_templates_description: {
+    en: "Troops Templates refers to predefined configurations or setups for military units.",
+    pl: "Szablony oddziałów odnoszą się do predefiniowanych konfiguracji lub ustawień dla jednostek wojskowych.",
+  },
+  fill_exact_description: {
+    en: "Fill Exact determines whether to fill in exactly the specified criteria.",
+    pl: "Wypełnij dokładnie określa, czy ma być wypełnione dokładnie określone kryteria.",
+  },
+  fill_troops_description: {
+    en: "Fill Troops involves filling military units with specified resources or attributes.",
+    pl: "Wypełnij oddziały polega na wypełnieniu jednostek wojskowych określonymi zasobami lub cechami.",
+  },
+  coords_description: {
+    en: "Coordinates represent the positions or locations specified by numerical values.",
+    pl: "Współrzędne reprezentują pozycje lub lokalizacje określone za pomocą wartości liczbowych.",
+  },
+  players_description: {
+    en: "Players refers to individuals or entities participating in a game or activity.",
+    pl: "Gracze odnoszą się do osób lub podmiotów uczestniczących w grze lub działalności.",
+  },
+  player_ids_description: {
+    en: "Player IDs are unique identifiers assigned to each player.",
+    pl: "ID graczy to unikalne identyfikatory przypisane do każdego gracza.",
+  },
+  allies_description: {
+    en: "Allies are individuals or groups united for a common purpose or goal.",
+    pl: "Sojusznicy to osoby lub grupy zjednoczone w celu wspólnego celu lub celu.",
+  },
+  ally_ids_description: {
+    en: "Ally IDs are unique identifiers assigned to each ally or allied group.",
+    pl: "ID sojuszników to unikalne identyfikatory przypisane do każdego sojusznika lub grupy sojuszniczej.",
+  },
+  ally_tags_description: {
+    en: "Ally Tags are descriptive labels or markers associated with allies or allied groups.",
+    pl: "Tagi sojuszników to opisowe etykiety lub znaczniki związane z sojusznikami lub grupami sojuszniczymi.",
+  },
+  exclude_players_description: {
+    en: "Exclude Players indicates which players should be omitted or not included.",
+    pl: "Wyklucz graczy określa, którzy gracze powinni być pominięci lub nie uwzględnieni.",
+  },
+  exclude_player_ids_description: {
+    en: "Exclude Player IDs are unique identifiers for players to be excluded from consideration.",
+    pl: "Wykluczone identyfikatory graczy to unikalne identyfikatory graczy, którzy mają zostać pominięci.",
+  },
+  exclude_allies_description: {
+    en: "Exclude Allies specifies which allies or allied groups should not be taken into account.",
+    pl: "Wyklucz sojuszników określa, którzy sojusznicy lub grupy sojusznicze nie powinny być uwzględniane.",
+  },
+  exclude_ally_tags_description: {
+    en: "Exclude Ally Tags indicate descriptive labels or markers for excluded allies or allied groups.",
+    pl: "Wyklucz tagi sojuszników wskazują opisowe etykiety lub znaczniki dla wykluczonych sojuszników lub grup sojuszniczych.",
+  },
+  exclude_ally_ids_description: {
+    en: "Exclude Ally IDs are unique identifiers for allies or allied groups to be excluded.",
+    pl: "Wykluczone identyfikatory sojuszników to unikalne identyfikatory sojuszników lub grup sojuszniczych, które mają zostać wykluczone.",
+  },
+  include_barbarians_description: {
+    en: "Include Barbarians determines whether to include barbarian units or entities.",
+    pl: "Uwzględnij barbarzyńców określa, czy uwzględniać jednostki lub podmioty barbarzyńskie.",
   },
 };
 
@@ -56,7 +120,10 @@ export const I18nProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<LanguageKey>("pl");
 
   const i18n = (key: string) => {
-    return translations[key]?.[language] ?? key;
+    return (
+      translations[key]?.[language] ??
+      `["${key}" is missing in lang "${language}"]`
+    );
   };
 
   return (

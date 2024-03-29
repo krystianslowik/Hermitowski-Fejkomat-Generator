@@ -41,7 +41,7 @@ export const Input = ({
         setError(i18n("errorLeadingTrailingSpaces"));
       } else {
         const regex =
-          /^[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*(,\s*[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_\.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*)*$/;
+          /^[a-zA-Z0-9\-_.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*(,\s*[a-zA-Z0-9\-_.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*)*$/;
         if (!regex.test(value)) {
           setError(i18n("errorInvalidInputFormat"));
         } else {
@@ -51,7 +51,7 @@ export const Input = ({
     };
 
     validateTextInput(value);
-  }, [i18n, value]);
+  }, [i18n, value]); // basic validation for all text inputs
 
   const inputChangeHandler = (
     whatField: FejkomatKeys,
@@ -66,27 +66,34 @@ export const Input = ({
   };
 
   return (
-    <>
-      <div className="flex items-center justify-between bg-slate-200 m-1 p-2 border-red-300">
-        <span>
-          <b>{i18n(whatField)}</b>
-        </span>
-        {smallInputs.has(whatField) && (
-          <SmallInput
-            whatField={whatField}
-            value={value}
-            inputChangeHandler={inputChangeHandler}
-          />
-        )}
-        {booleanInputs.has(whatField) && (
+    <div
+      className={`relative flex items-start p-4 border border-red-300 rounded-lg shadow ${
+        booleanInputs.has(whatField) ? "flex-row items-center" : "flex-col"
+      }`}
+    >
+      <div className="flex flex-col flex-grow">
+        <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
+        <div className="mb-2 w-full text-sm text-gray-500">
+          {i18n(`${whatField}_description`)}
+        </div>
+      </div>
+      {smallInputs.has(whatField) && (
+        <SmallInput
+          whatField={whatField}
+          value={value}
+          inputChangeHandler={inputChangeHandler}
+        />
+      )}
+      {booleanInputs.has(whatField) && (
+        <div className="flex items-start ml-auto">
           <BooleanInput
             whatField={whatField}
             value={typeof value === "boolean" ? value : false}
             inputChangeHandler={inputChangeHandler}
           />
-        )}
-      </div>
+        </div>
+      )}
       {error && <InputError errorMessage={error} />}
-    </>
+    </div>
   );
 };

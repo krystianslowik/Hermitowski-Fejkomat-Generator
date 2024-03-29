@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./App.css";
+
 import { Input } from "./components/UI/Input";
 import { FakingSettings } from "./types/HermitowskiFejkomat.types";
 import { defaultSettings, fejkomatyFields } from "./components/DefaultValues";
@@ -22,7 +24,7 @@ function App() {
 
   return (
     <div className="grid grid-cols-2 bg-slate-100 text-red-700 p-4 w-full">
-      <div>
+      <div className="grid grid-cols-2 gap-4">
         {fejkomatyFields.map((field) => (
           <Input valueToSet={setNewSettings} field={field} key={field} />
         ))}
