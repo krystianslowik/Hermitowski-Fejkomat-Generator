@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { type FejkomatKeys } from "../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../store/i18n";
+
 import { SmallInput } from "./Inputs/Small";
 import { BooleanInput } from "./Inputs/Boolean";
 import { InputError } from "./Error";
@@ -8,6 +9,8 @@ import { Placeholder } from "./Inputs/Placeholder";
 import { Coords } from "./Inputs/Coords";
 import { Numbers } from "./Inputs/Numbers";
 import { FillTroopsInput } from "./Inputs/FillTroops";
+import { Troops } from "../../types/HermitowskiFejkomat.types";
+import { TroopsInput } from "./Inputs/TroopsTemplate";
 
 type InputProps = {
   valueToSet: (key: FejkomatKeys, value: any) => void;
@@ -86,11 +89,11 @@ export const Input = ({
 
   const inputChangeHandler = (
     whatField: FejkomatKeys,
-    newValue: string | boolean
+    newValue: string | boolean | Troops[]
   ): void => {
     console.log("Field: ", whatField, "Value: ", newValue);
     setValue(newValue);
-    validateTextInput(newValue); // Directly call validation here
+    typeof newValue === "string" && validateTextInput(newValue); // Directly call validation here
     valueToSet(whatField, newValue);
   };
 
@@ -144,10 +147,18 @@ export const Input = ({
           />
         )}
 
+        {whatField === "troops_templates" && (
+          <TroopsInput
+            whatField={whatField}
+            inputChangeHandler={inputChangeHandler}
+          />
+        )}
+
         {!smallInputs.has(whatField) &&
           !booleanInputs.has(whatField) &&
           !numberInputs.has(whatField) &&
           whatField !== "coords" &&
+          whatField !== "troops_templates" &&
           whatField !== "fill_troops" && <Placeholder whatField={whatField} />}
         {error && <InputError errorMessage={error} />}
       </div>

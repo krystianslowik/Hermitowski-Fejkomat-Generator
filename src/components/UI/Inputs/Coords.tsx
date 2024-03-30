@@ -23,15 +23,15 @@ export const Coords = ({
   };
 
   return (
-    <div className="relative flex p-4 border border-gray-300 bg-gray-50 rounded-lg shadow flex-col items-start">
-      <div className="flex flex-col flex-grow">
+    <div className="relative flex flex-col p-4 border border-gray-300 bg-gray-50 rounded-lg shadow h-full">
+      <div className="mb-2">
         <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
-        <div className="mb-2 w-full text-sm text-gray-500">
+        <div className="w-full text-sm text-gray-500">
           {i18n(`${whatField}_description`)}
         </div>
       </div>
       <textarea
-        className="rounded-lg block w-full min-h-36 max-h-36 p-2 mr-4 text-sm text-gray-800 bg-white border border-gray-300 focus:border-green-500 focus:ring-1 focus:ring-green-500"
+        className="flex-1 resize-none rounded-lg block w-full p-2 text-sm text-gray-800 bg-white border border-gray-300 focus:border-green-500 focus:ring-1 focus:ring-green-500"
         name={whatField}
         value={value}
         placeholder={i18n(whatField)}

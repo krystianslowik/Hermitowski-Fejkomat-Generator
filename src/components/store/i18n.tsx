@@ -133,12 +133,21 @@ const translations: TranslationMap = {
   axe: { en: "Axe", pl: "Topornik" },
   archer: { en: "Archer", pl: "Łucznik" },
   spy: { en: "Scout", pl: "Zwiadowca" },
-  light: { en: "Light Cavalry", pl: "Lekka kawaleria" },
+  light: { en: "Light Cavalry", pl: "LK" },
   marcher: { en: "Mounted Archer", pl: "ŁNK" },
-  heavy: { en: "Heavy Cavalry", pl: "Ciężka kawaleria" },
+  heavy: { en: "Heavy Cavalry", pl: "CK" },
   ram: { en: "Ram", pl: "Taran" },
   catapult: { en: "Catapult", pl: "Katapulta" },
   snob: { en: "Snob", pl: "Grubas" },
+  knight: { en: "Knight", pl: "Rycerz" },
+  removeTemplate: { en: "Remove template", pl: "Usuń szablon" },
+  cancel: { en: "Cancel", pl: "Zamknij" },
+  addTemplate: { en: "Add template", pl: "Dodaj szablon" },
+  saveTemplate: { en: "Save template", pl: "Zapisz szablon" },
+  minimumOneFieldNeeded: {
+    en: "Minimum one field is required!",
+    pl: "Przynajmniej jedna jednostka musi być wypełniona!",
+  },
 };
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
