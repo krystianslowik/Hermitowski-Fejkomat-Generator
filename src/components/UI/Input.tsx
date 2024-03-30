@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useState } from "react";
 import { type FejkomatKeys } from "../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../store/i18n";
 import { SmallInput } from "./Inputs/Small";
@@ -43,35 +43,53 @@ export const Input = ({
     "ally_ids",
     "exclude_ally_ids",
   ]);
-  useEffect(() => {
-    const validateTextInput = (value: string | boolean): void => {
-      if (typeof value === "boolean" || value === "") {
-        setError("");
-      } else if (value.trim() !== value) {
-        setError(i18n("errorLeadingTrailingSpaces"));
-      } else if (typeof value === "string" && value !== "coords") {
-        const regex =
-          /^[a-zA-Z0-9\-_.!@#$%^&*<>|[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_.!@#$%^&*<>|[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*(,\s*[a-zA-Z0-9\-_.!@#$%^&*<>|[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_.!@#$%^&*<>|[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*)*$/;
-        if (!regex.test(value)) {
-          setError(i18n("errorInvalidInputFormat"));
-        } else if (whatField !== "coords" && !numberInputs.has(whatField))
-          setError("");
-      }
-    };
 
-    validateTextInput(value);
-  }, [i18n, value]); // basic validation for all text inputs
-  // todo: REFACTOR THAT KURWAA
+  const validateTextInput = (value: string | boolean): void => {
+    setError("");
+    // clean errors for empty and booleans
+    if (typeof value === "boolean" || value === "") {
+      setError("");
+      return;
+    }
+
+    // remove spaces
+    if (value.trim() !== value) {
+      setError(i18n("errorLeadingTrailingSpaces"));
+      return;
+    }
+
+    // any other string values in format "źółć,jakaś inna źółć!!!,wdewrgfa"
+    if (typeof value === "string") {
+      const regex = /^(.*)(,\s*.*)*$/;
+      if (!regex.test(value)) {
+        setError(i18n("errorInvalidInputFormat"));
+        return;
+      }
+    }
+
+    // number inputs in format "111,222,333"
+    if (numberInputs.has(whatField)) {
+      const regex = /^\d{1,64}(,\d{1,64})*$/;
+      regex.test(value) || setError(i18n("errorNumberInvalid"));
+      return;
+    }
+    // coords in format "111|222,222|333"
+    if (whatField === "coords") {
+      const regex = /^\d{3}\|\d{3}(,\d{3}\|\d{3})*$/;
+      !regex.test(value.trim()) && setError(i18n("errorCoordsInvalid"));
+      return;
+    }
+    // if valid, clean error
+    setError("");
+  };
 
   const inputChangeHandler = (
     whatField: FejkomatKeys,
-    e: ChangeEvent<HTMLInputElement>
+    newValue: string | boolean
   ): void => {
-    const isCheckbox = e.target.type === "checkbox";
-    const newValue = isCheckbox ? e.target.checked : e.target.value;
-
     console.log("Field: ", whatField, "Value: ", newValue);
     setValue(newValue);
+    validateTextInput(newValue); // Directly call validation here
     valueToSet(whatField, newValue);
   };
 
@@ -82,14 +100,18 @@ export const Input = ({
           <SmallInput
             whatField={whatField}
             value={value}
-            inputChangeHandler={inputChangeHandler}
+            inputChangeHandler={(field, value) =>
+              inputChangeHandler(field, value)
+            }
           />
         )}
         {booleanInputs.has(whatField) && (
           <BooleanInput
             whatField={whatField}
             value={typeof value === "boolean" ? value : false}
-            inputChangeHandler={inputChangeHandler}
+            inputChangeHandler={(field, value) =>
+              inputChangeHandler(field, value)
+            }
           />
         )}
         {!smallInputs.has(whatField) &&
@@ -100,7 +122,9 @@ export const Input = ({
           <Coords
             whatField={whatField}
             value={value}
-            inputChangeHandler={inputChangeHandler}
+            inputChangeHandler={(field, value) =>
+              inputChangeHandler(field, value)
+            }
             setError={setError}
           />
         )}
@@ -108,7 +132,9 @@ export const Input = ({
           <Numbers
             whatField={whatField}
             value={value}
-            inputChangeHandler={inputChangeHandler}
+            inputChangeHandler={(field, value) =>
+              inputChangeHandler(field, value)
+            }
             setError={setError}
           />
         )}

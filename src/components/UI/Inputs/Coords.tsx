@@ -1,15 +1,11 @@
 import { ChangeEvent, ReactElement } from "react";
 import { FejkomatKeys } from "../../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../../store/i18n";
-import InputError from "../Error";
 
 type CoordsInputProps = {
   whatField: FejkomatKeys;
   value: string;
-  inputChangeHandler: (
-    whatField: FejkomatKeys,
-    e: ChangeEvent<HTMLInputElement>
-  ) => void;
+  inputChangeHandler: (whatField: FejkomatKeys, e: string) => void;
 
   setError: (value: string) => void;
 };
@@ -22,17 +18,9 @@ export const Coords = ({
 }: CoordsInputProps): ReactElement => {
   const { i18n } = useI18n();
 
-  const validateCoords = (input: string): boolean => {
-    const pattern = /^\d{3}\|\d{3}(,\d{3}\|\d{3})*$/;
-    return pattern.test(input.trim());
-  };
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    const isValid = validateCoords(inputValue);
-    isValid ? setError("") : setError(i18n("errorCoordsInvalid"));
-    console.log(`Value ${inputValue} is valid: `, isValid);
-    inputChangeHandler(whatField, e); // Always call inputChangeHandler
+    const adjustedValue = e.target.value.replace(" ", "");
+    inputChangeHandler(whatField, adjustedValue);
   };
 
   return (
@@ -51,6 +39,7 @@ export const Coords = ({
           value={value}
           placeholder={i18n(whatField)}
           onChange={handleChange}
+          maxLength={1199} //150 coords, comma separated
         />
       </div>
     </>

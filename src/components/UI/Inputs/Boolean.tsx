@@ -1,7 +1,7 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { FejkomatKeys } from "../../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../../store/i18n";
-import { fejkomatyFields, defaultSettings } from "../../DefaultValues";
+import { defaultSettings } from "../../DefaultValues";
 
 type BooleanInputProps = {
   whatField: FejkomatKeys;
@@ -26,7 +26,7 @@ export const BooleanInput = ({
   }); // todo refaktor, add this to parent
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    inputChangeHandler(whatField, e);
+    inputChangeHandler(whatField, e.target.checked);
     setIsChecked((prev) => !prev);
   };
 

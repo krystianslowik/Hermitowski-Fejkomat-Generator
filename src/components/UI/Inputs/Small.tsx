@@ -5,10 +5,7 @@ import { useI18n } from "../../store/i18n";
 type SmallInputProps = {
   whatField: FejkomatKeys;
   value: string;
-  inputChangeHandler: (
-    whatField: FejkomatKeys,
-    e: ChangeEvent<HTMLInputElement>
-  ) => void;
+  inputChangeHandler: (whatField: FejkomatKeys, e: string) => void;
 };
 
 export const SmallInput = ({
@@ -19,7 +16,7 @@ export const SmallInput = ({
   const { i18n } = useI18n();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    inputChangeHandler(whatField, e);
+    inputChangeHandler(whatField, e.target.value);
   };
 
   return (
@@ -38,6 +35,7 @@ export const SmallInput = ({
           value={value}
           placeholder={i18n(whatField)}
           onChange={handleChange}
+          maxLength={5000} // enough i guess
         />
       </div>
     </>

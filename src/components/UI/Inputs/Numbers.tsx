@@ -1,15 +1,11 @@
 import { ChangeEvent, ReactElement } from "react";
 import { FejkomatKeys } from "../../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../../store/i18n";
-import InputError from "../Error";
 
 type NumbersInputProps = {
   whatField: FejkomatKeys;
   value: string;
-  inputChangeHandler: (
-    whatField: FejkomatKeys,
-    e: ChangeEvent<HTMLInputElement>
-  ) => void;
+  inputChangeHandler: (whatField: FejkomatKeys, e: string) => void;
 
   setError: (value: string) => void;
 };
@@ -22,17 +18,9 @@ export const Numbers = ({
 }: NumbersInputProps): ReactElement => {
   const { i18n } = useI18n();
 
-  const validateNumber = (input: string): boolean => {
-    const pattern = /^\d{1,64}(,\d{1,64})*$/;
-    return pattern.test(input.trim());
-  };
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    const isValid = validateNumber(inputValue);
-    isValid ? setError("") : setError(i18n("errorNumberInvalid"));
-    console.log(`Value ${inputValue} is valid: `, isValid);
-    inputChangeHandler(whatField, e); // Always call inputChangeHandler
+    const adjustedValue = e.target.value.replace(" ", "");
+    inputChangeHandler(whatField, adjustedValue);
   };
 
   return (
@@ -51,6 +39,7 @@ export const Numbers = ({
           value={value}
           placeholder={i18n(whatField)}
           onChange={handleChange}
+          maxLength={1499} //max 150 10char id's
         />
       </div>
     </>
