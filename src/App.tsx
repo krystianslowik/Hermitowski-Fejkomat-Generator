@@ -23,8 +23,8 @@ function App() {
   };
 
   return (
-    <div className="grid grid-cols-2 bg-slate-100 text-red-700 p-4 w-full">
-      <div className="grid grid-cols-2 gap-4">
+    <div className="flex flex-col md:grid md:grid-cols-2 bg-slate-100 text-red-700 p-4 w-full overflow-hidden">
+      <div className="md:grid md:grid-cols-2 md:gap-4">
         {fejkomatyFields.map((field) => (
           <Input valueToSet={setNewSettings} field={field} key={field} />
         ))}

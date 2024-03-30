@@ -48,6 +48,14 @@ const translations: TranslationMap = {
     en: "Wrong format. Unwanted comma?",
     pl: "Błędny format. Niechciany przecinek?",
   },
+  errorCoordsInvalid: {
+    en: "Wrong coords. Format is XXX|YYY?",
+    pl: "Błędne koordy. Czy format to XXX|YYY?",
+  },
+  errorNumberInvalid: {
+    en: "Wrong ID. Format is 111111,222222?",
+    pl: "Błędne ID. Czy format to 11111,22222?",
+  },
   safeguard_description: {
     en: "Safeguard is a feature that provides protection or security measures.",
     pl: "Zabezpieczenie to funkcja zapewniająca ochronę lub środki bezpieczeństwa.",
@@ -133,7 +141,6 @@ export const I18nProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Custom hook to use the i18n context
 export const useI18n = () => {
   const context = useContext(I18nContext);
   if (!context) {

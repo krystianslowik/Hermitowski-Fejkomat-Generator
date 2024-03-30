@@ -2,7 +2,7 @@ import { FejkomatKeys } from "../types/FejkomatValuesKeys.types";
 import { FakingSettings } from "../types/HermitowskiFejkomat.types";
 export const defaultSettings: FakingSettings = {
   safeguard: {},
-  troops_templates: [{}],
+
   fill_exact: false,
   fill_troops: "spear,sword,axe,archer,spy,light,marcher,heavy,ram,catapult",
   coords: "",
@@ -20,8 +20,6 @@ export const defaultSettings: FakingSettings = {
   boundaries_circle: [],
   boundaries_box: [],
   blocking_enabled: false,
-  blocking_local: { time_s: 5, count: 1, block_players: false },
-  blocking_global: [{ time_s: 5, count: 1, block_players: false, name: "" }],
   skip_night_bonus: false,
   date_ranges: [],
   changing_village_enabled: true,

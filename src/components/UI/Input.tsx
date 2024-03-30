@@ -4,6 +4,9 @@ import { useI18n } from "../store/i18n";
 import { SmallInput } from "./Inputs/Small";
 import { BooleanInput } from "./Inputs/Boolean";
 import InputError from "./Error";
+import { Placeholder } from "./Inputs/Placeholder";
+import { Coords } from "./Inputs/Coords";
+import { Numbers } from "./Inputs/Numbers";
 
 type InputProps = {
   valueToSet: (key: FejkomatKeys, value: any) => void;
@@ -18,7 +21,7 @@ export const Input = ({
   const [error, setError] = useState<string>("");
   const { i18n } = useI18n();
 
-  const smallInputs = new Set([
+  const smallInputs = new Set<FejkomatKeys>([
     "allies",
     "players",
     "ally_tags",
@@ -27,11 +30,18 @@ export const Input = ({
     "exclude_players",
   ]);
 
-  const booleanInputs = new Set([
+  const booleanInputs = new Set<FejkomatKeys>([
     "fill_exact",
     "include_barbarians",
     "skip_night_bonus",
     "changing_village_enabled",
+  ]);
+
+  const numberInputs = new Set<FejkomatKeys>([
+    "player_ids",
+    "exclude_player_ids",
+    "ally_ids",
+    "exclude_ally_ids",
   ]);
   useEffect(() => {
     const validateTextInput = (value: string | boolean): void => {
@@ -39,19 +49,19 @@ export const Input = ({
         setError("");
       } else if (value.trim() !== value) {
         setError(i18n("errorLeadingTrailingSpaces"));
-      } else {
+      } else if (typeof value === "string" && value !== "coords") {
         const regex =
-          /^[a-zA-Z0-9\-_.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*(,\s*[a-zA-Z0-9\-_.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_.!@#$%^&*<>[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*)*$/;
+          /^[a-zA-Z0-9\-_.!@#$%^&*<>|[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_.!@#$%^&*<>|[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*(,\s*[a-zA-Z0-9\-_.!@#$%^&*<>|[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']+(\s*[a-zA-Z0-9\-_.!@#$%^&*<>|[\]ąćęłńóśżźĄĆĘŁŃÓŚŻŹ']*)*)*$/;
         if (!regex.test(value)) {
           setError(i18n("errorInvalidInputFormat"));
-        } else {
+        } else if (whatField !== "coords" && !numberInputs.has(whatField))
           setError("");
-        }
       }
     };
 
     validateTextInput(value);
   }, [i18n, value]); // basic validation for all text inputs
+  // todo: REFACTOR THAT KURWAA
 
   const inputChangeHandler = (
     whatField: FejkomatKeys,
@@ -66,34 +76,44 @@ export const Input = ({
   };
 
   return (
-    <div
-      className={`relative flex items-start p-4 border border-red-300 rounded-lg shadow ${
-        booleanInputs.has(whatField) ? "flex-row items-center" : "flex-col"
-      }`}
-    >
-      <div className="flex flex-col flex-grow">
-        <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
-        <div className="mb-2 w-full text-sm text-gray-500">
-          {i18n(`${whatField}_description`)}
-        </div>
-      </div>
-      {smallInputs.has(whatField) && (
-        <SmallInput
-          whatField={whatField}
-          value={value}
-          inputChangeHandler={inputChangeHandler}
-        />
-      )}
-      {booleanInputs.has(whatField) && (
-        <div className="flex items-start ml-auto">
+    <>
+      <div className="r none">
+        {smallInputs.has(whatField) && (
+          <SmallInput
+            whatField={whatField}
+            value={value}
+            inputChangeHandler={inputChangeHandler}
+          />
+        )}
+        {booleanInputs.has(whatField) && (
           <BooleanInput
             whatField={whatField}
             value={typeof value === "boolean" ? value : false}
             inputChangeHandler={inputChangeHandler}
           />
-        </div>
-      )}
-      {error && <InputError errorMessage={error} />}
-    </div>
+        )}
+        {!smallInputs.has(whatField) &&
+          !booleanInputs.has(whatField) &&
+          !numberInputs.has(whatField) &&
+          whatField !== "coords" && <Placeholder whatField={whatField} />}
+        {whatField === "coords" && (
+          <Coords
+            whatField={whatField}
+            value={value}
+            inputChangeHandler={inputChangeHandler}
+            setError={setError}
+          />
+        )}
+        {numberInputs.has(whatField) && (
+          <Numbers
+            whatField={whatField}
+            value={value}
+            inputChangeHandler={inputChangeHandler}
+            setError={setError}
+          />
+        )}
+        {error && <InputError errorMessage={error} />}
+      </div>
+    </>
   );
 };
