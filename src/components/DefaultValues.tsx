@@ -4,7 +4,7 @@ export const defaultSettings: FakingSettings = {
   safeguard: {},
 
   fill_exact: false,
-  fill_troops: "spear,sword,axe,archer,spy,light,marcher,heavy,ram,catapult",
+  fill_troops: "spear,sword,axe,spy,light,ram,catapult",
   coords: "",
   players: "",
   player_ids: "",
@@ -26,10 +26,10 @@ export const defaultSettings: FakingSettings = {
 };
 
 export const fejkomatyFields: FejkomatKeys[] = [
-  "safeguard",
+  "coords",
   "troops_templates",
   "fill_troops",
-  "coords",
+  "safeguard",
   "players",
   "player_ids",
   "allies",

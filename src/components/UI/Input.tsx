@@ -3,10 +3,11 @@ import { type FejkomatKeys } from "../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../store/i18n";
 import { SmallInput } from "./Inputs/Small";
 import { BooleanInput } from "./Inputs/Boolean";
-import InputError from "./Error";
+import { InputError } from "./Error";
 import { Placeholder } from "./Inputs/Placeholder";
 import { Coords } from "./Inputs/Coords";
 import { Numbers } from "./Inputs/Numbers";
+import { FillTroopsInput } from "./Inputs/FillTroops";
 
 type InputProps = {
   valueToSet: (key: FejkomatKeys, value: any) => void;
@@ -95,7 +96,7 @@ export const Input = ({
 
   return (
     <>
-      <div className="r none">
+      <div className="flex flex-wrap min-w-1/4 max-w-1/3 ">
         {smallInputs.has(whatField) && (
           <SmallInput
             whatField={whatField}
@@ -114,20 +115,6 @@ export const Input = ({
             }
           />
         )}
-        {!smallInputs.has(whatField) &&
-          !booleanInputs.has(whatField) &&
-          !numberInputs.has(whatField) &&
-          whatField !== "coords" && <Placeholder whatField={whatField} />}
-        {whatField === "coords" && (
-          <Coords
-            whatField={whatField}
-            value={value}
-            inputChangeHandler={(field, value) =>
-              inputChangeHandler(field, value)
-            }
-            setError={setError}
-          />
-        )}
         {numberInputs.has(whatField) && (
           <Numbers
             whatField={whatField}
@@ -138,6 +125,30 @@ export const Input = ({
             setError={setError}
           />
         )}
+        {whatField === "coords" && (
+          <Coords
+            whatField={whatField}
+            value={value}
+            inputChangeHandler={(field, value) =>
+              inputChangeHandler(field, value)
+            }
+            setError={setError}
+          />
+        )}
+        {whatField === "fill_troops" && (
+          <FillTroopsInput
+            whatField={whatField}
+            inputChangeHandler={(field, value) =>
+              inputChangeHandler(field, value)
+            }
+          />
+        )}
+
+        {!smallInputs.has(whatField) &&
+          !booleanInputs.has(whatField) &&
+          !numberInputs.has(whatField) &&
+          whatField !== "coords" &&
+          whatField !== "fill_troops" && <Placeholder whatField={whatField} />}
         {error && <InputError errorMessage={error} />}
       </div>
     </>

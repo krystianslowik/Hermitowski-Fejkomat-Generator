@@ -32,15 +32,15 @@ export const BooleanInput = ({
 
   return (
     <>
-      <div className=" flex p-4 border border-red-300 rounded-lg shadow flex-row items-center">
-        <div className="flex flex-col flex-grow">
+      <div className="p-4 border bg-gray-50 rounded-lg shadow md:flex md:items-center md:flex-row">
+        <div className="flex-grow">
           <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
-          <div className="mb-2 w-full text-sm text-gray-500">
+          <div className="mb-2 text-sm text-gray-500">
             {i18n(`${whatField}_description`)}
           </div>
         </div>
-        <div className="flex ">
-          <div className="relative  w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+        <div className="flex justify-center md:justify-start">
+          <div className="relative w-10 mr-2 align-middle select-none transition duration-200 ease-in">
             <input
               type="checkbox"
               name={whatField}

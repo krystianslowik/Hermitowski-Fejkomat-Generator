@@ -69,8 +69,8 @@ const translations: TranslationMap = {
     pl: "Wypełnij dokładnie określa, czy ma być wypełnione dokładnie określone kryteria.",
   },
   fill_troops_description: {
-    en: "Fill Troops involves filling military units with specified resources or attributes.",
-    pl: "Wypełnij oddziały polega na wypełnieniu jednostek wojskowych określonymi zasobami lub cechami.",
+    en: "Decide which troops should be filled with the fey.",
+    pl: "Zdecyduj, jakimi typami wojsk powinien zostać wypełniony fejkomat.",
   },
   coords_description: {
     en: "Coordinates represent the positions or locations specified by numerical values.",
@@ -120,6 +120,25 @@ const translations: TranslationMap = {
     en: "Include Barbarians determines whether to include barbarian units or entities.",
     pl: "Uwzględnij barbarzyńców określa, czy uwzględniać jednostki lub podmioty barbarzyńskie.",
   },
+  changing_village_enabled_description: {
+    en: "Change the village after every peycomat call. Speeds up the fejking process.",
+    pl: "Zmieniaj wioskę po kadym wywołaniu fejkomatu. Przyspiesza proces fejkowania.",
+  },
+  skip_night_bonus_description: {
+    en: "Skip the night bonus (according to server settings).",
+    pl: "Omijaj bonus nocny (zgodny z ustawieniami serwera).",
+  },
+  spear: { en: "Spear", pl: "Pikinier" },
+  sword: { en: "Sword", pl: "Miecznik" },
+  axe: { en: "Axe", pl: "Topornik" },
+  archer: { en: "Archer", pl: "Łucznik" },
+  spy: { en: "Scout", pl: "Zwiadowca" },
+  light: { en: "Light Cavalry", pl: "Lekka kawaleria" },
+  marcher: { en: "Mounted Archer", pl: "ŁNK" },
+  heavy: { en: "Heavy Cavalry", pl: "Ciężka kawaleria" },
+  ram: { en: "Ram", pl: "Taran" },
+  catapult: { en: "Catapult", pl: "Katapulta" },
+  snob: { en: "Snob", pl: "Grubas" },
 };
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);

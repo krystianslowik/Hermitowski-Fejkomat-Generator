@@ -27,5 +27,3 @@ export const InputError: FC<ErrorProps> = ({ errorMessage }) => {
     </div>
   );
 };
-
-export default InputError;

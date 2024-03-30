@@ -1,9 +1,9 @@
 export type FejkomatKeys =
-  | "safeguard"
+  | "coords"
   | "troops_templates"
+  | "safeguard"
   | "fill_exact"
   | "fill_troops"
-  | "coords"
   | "players"
   | "player_ids"
   | "allies"

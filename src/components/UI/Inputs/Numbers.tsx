@@ -25,7 +25,7 @@ export const Numbers = ({
 
   return (
     <>
-      <div className="relative flex p-4 border border-red-300 rounded-lg shadow flex-col items-start">
+      <div className="relative flex max-w-1/2 p-4 border border-gray-300 bg-gray-50 rounded-lg shadow flex-col items-start">
         <div className="flex flex-col flex-grow">
           <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
           <div className="mb-2 w-full text-sm text-gray-500">
@@ -33,7 +33,7 @@ export const Numbers = ({
           </div>
         </div>
         <input
-          className="rounded-lg block w-full p-2 mr-4 text-sm text-gray-900 bg-white border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          className="rounded-lg block w-full p-2 mr-4 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
           name={whatField}
           type="text"
           value={value}
