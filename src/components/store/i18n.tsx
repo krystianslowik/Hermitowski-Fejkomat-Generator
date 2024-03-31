@@ -108,6 +108,10 @@ const translations: TranslationMap = {
     en: "Names of tribes that are excluded will not be in fejkomat as targets. Players/tribes added here will be excluded from fejkomat and WILL NOT be attacked. ",
     pl: "Nazwy plemion, które są wykluczone nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani. ",
   },
+  date_ranges_description: {
+    en: "Date ranges in which attacks should take place. You can set specific dates or only times when attacks should occur. ",
+    pl: "Zakresy dat, w których powinny odbywać się ataki. Mozna ustawić konkretne daty lub wyłącznie godziny, w których powinny dochodzić ataki. ",
+  },
   exclude_ally_tags_description: {
     en: "Exclude Ally Tags indicate descriptive labels or markers for excluded allies or allied groups.",
     pl: "Tagi plemion, które są wykluczone nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani. ",
@@ -142,11 +146,22 @@ const translations: TranslationMap = {
   knight: { en: "Knight", pl: "Rycerz" },
   removeTemplate: { en: "Remove template", pl: "Usuń szablon" },
   cancel: { en: "Cancel", pl: "Zamknij" },
+  remove: { en: "Remove", pl: "Usuń" },
   addTemplate: { en: "Add template", pl: "Dodaj szablon" },
   saveTemplate: { en: "Save template", pl: "Zapisz szablon" },
+  addDateRange: { en: "Add date range", pl: "Dodaj zakres" },
+  add: { en: "Add", pl: "Dodaj" },
+  availableSoon: {
+    pl: "Wkrótce dostępne",
+    en: "Available soon",
+  },
   minimumOneFieldNeeded: {
     en: "Minimum one field is required!",
     pl: "Przynajmniej jedna jednostka musi być wypełniona!",
+  },
+  useDateTime: {
+    en: "Add exact date",
+    pl: "Dodaj konkretną datę",
   },
 };
 

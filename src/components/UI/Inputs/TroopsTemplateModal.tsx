@@ -52,10 +52,10 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSave }) => {
   return (
     <div
       className={`fixed inset-0 z-20 bg-black bg-opacity-50 flex justify-center items-center ${
-        isOpen || "hidden"
+        isOpen ? "" : "hidden"
       }`}
     >
-      <div className="bg-white p-4 rounded-lg shadow-lg w-3/4 md:w-1/2 lg:w-1/3">
+      <div className="bg-white p-4 rounded-lg shadow-lg w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3 max-h-[90vh] overflow-auto">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-bold">{i18n("addTemplate")}</h2>
           <button onClick={onClose} className="text-lg font-semibold">
@@ -63,18 +63,18 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSave }) => {
           </button>
           {error && <InputError errorMessage={error} />}
         </div>
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="flex flex-wrap w-full justify-around">
           {Object.keys(availableTroops).map((troopType) => (
             <div
               key={troopType}
-              className="flex flex-col items-center p-2 rounded-lg bg-gray-200 shadow"
+              className="flex flex-col m-2 p-2 rounded-lg bg-gray-100 shadow w-36"
             >
               <span className="text-sm font-medium text-gray-700">
                 {i18n(troopType)}
               </span>
               <input
                 type="number"
-                className="mt-1 w-1/2 text-center rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50"
+                className="mt-1 w-full text-center rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50"
                 value={template[troopType as keyof Troops] || ""}
                 onChange={(e) =>
                   handleChange(

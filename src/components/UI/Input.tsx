@@ -91,7 +91,7 @@ export const Input = ({
 
   const inputChangeHandler = (
     whatField: FejkomatKeys,
-    newValue: string | boolean | Troops | Troops[]
+    newValue: string | boolean | Troops | Troops[] | string[]
   ): void => {
     console.log("Field: ", whatField, "Value: ", newValue);
     setValue(newValue);
@@ -101,82 +101,83 @@ export const Input = ({
 
   return (
     <>
-      <div className="flex flex-wrap min-w-1/4 max-w-1/3 ">
-        {smallInputs.has(whatField) && (
-          <SmallInput
-            whatField={whatField}
-            value={value}
-            inputChangeHandler={(field, value) =>
-              inputChangeHandler(field, value)
-            }
-          />
-        )}
-        {booleanInputs.has(whatField) && (
-          <BooleanInput
-            whatField={whatField}
-            value={typeof value === "boolean" ? value : false}
-            inputChangeHandler={(field, value) =>
-              inputChangeHandler(field, value)
-            }
-          />
-        )}
-        {numberInputs.has(whatField) && (
-          <Numbers
-            whatField={whatField}
-            value={value}
-            inputChangeHandler={(field, value) =>
-              inputChangeHandler(field, value)
-            }
-            setError={setError}
-          />
-        )}
-        {whatField === "coords" && (
-          <Coords
-            whatField={whatField}
-            value={value}
-            inputChangeHandler={(field, value) =>
-              inputChangeHandler(field, value)
-            }
-            setError={setError}
-          />
-        )}
-        {whatField === "fill_troops" && (
-          <FillTroopsInput
-            whatField={whatField}
-            inputChangeHandler={(field, value) =>
-              inputChangeHandler(field, value)
-            }
-          />
-        )}
+      {smallInputs.has(whatField) && (
+        <SmallInput
+          whatField={whatField}
+          value={value}
+          inputChangeHandler={(field, value) =>
+            inputChangeHandler(field, value)
+          }
+        />
+      )}
+      {booleanInputs.has(whatField) && (
+        <BooleanInput
+          whatField={whatField}
+          value={typeof value === "boolean" ? value : false}
+          inputChangeHandler={(field, value) =>
+            inputChangeHandler(field, value)
+          }
+        />
+      )}
+      {numberInputs.has(whatField) && (
+        <Numbers
+          whatField={whatField}
+          value={value}
+          inputChangeHandler={(field, value) =>
+            inputChangeHandler(field, value)
+          }
+          setError={setError}
+        />
+      )}
+      {whatField === "coords" && (
+        <Coords
+          whatField={whatField}
+          value={value}
+          inputChangeHandler={(field, value) =>
+            inputChangeHandler(field, value)
+          }
+          setError={setError}
+        />
+      )}
+      {whatField === "fill_troops" && (
+        <FillTroopsInput
+          whatField={whatField}
+          inputChangeHandler={(field, value) =>
+            inputChangeHandler(field, value)
+          }
+        />
+      )}
 
-        {whatField === "troops_templates" && (
-          <TroopsInput
-            whatField={whatField}
-            inputChangeHandler={inputChangeHandler}
-          />
-        )}
+      {whatField === "troops_templates" && (
+        <TroopsInput
+          whatField={whatField}
+          inputChangeHandler={inputChangeHandler}
+        />
+      )}
 
-        {whatField === "safeguard" && (
-          <SafeguardInput
-            whatField={whatField}
-            inputChangeHandler={inputChangeHandler}
-          />
-        )}
+      {whatField === "safeguard" && (
+        <SafeguardInput
+          whatField={whatField}
+          inputChangeHandler={inputChangeHandler}
+        />
+      )}
 
-        {whatField === "date_ranges" && (
-          <DateRangesInput whatField={whatField} />
-        )}
+      {whatField === "date_ranges" && (
+        <DateRangesInput
+          whatField={whatField}
+          inputChangeHandler={inputChangeHandler}
+        />
+      )}
 
-        {!smallInputs.has(whatField) &&
-          !booleanInputs.has(whatField) &&
-          !numberInputs.has(whatField) &&
-          whatField !== "coords" &&
-          whatField !== "troops_templates" &&
-          whatField !== "date_ranges" &&
-          whatField !== "safeguard" &&
-          whatField !== "fill_troops" && <Placeholder whatField={whatField} />}
-        {error && <InputError errorMessage={error} />}
-      </div>
+      {!smallInputs.has(whatField) &&
+        !booleanInputs.has(whatField) &&
+        !numberInputs.has(whatField) &&
+        whatField !== "coords" &&
+        whatField !== "troops_templates" &&
+        whatField !== "date_ranges" &&
+        whatField !== "safeguard" &&
+        whatField !== "fill_troops" && <Placeholder whatField={whatField} />}
+      {error && <InputError errorMessage={error} />}
     </>
   );
 };

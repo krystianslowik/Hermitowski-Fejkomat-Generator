@@ -30,7 +30,13 @@ export const Output = ({ code }: OutputProps) => {
   return (
     <>
       <pre>
-        <code>{JSON.stringify(filteredCode, null, 4)}</code>
+        <code>
+          {"javascript: var HermitowskieFejki = "}
+          {JSON.stringify(filteredCode, null, 4)}
+          {
+            "; $.ajax('https://media.innogamescdn.com/com_DS_PL/skrypty/HermitowskieFejki.js?_='+~~(Date.now()/9e6),{cache:1,dataType:'script'}); void (0);"
+          }
+        </code>
       </pre>
     </>
   );
