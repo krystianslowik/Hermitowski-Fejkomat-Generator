@@ -34,7 +34,8 @@ export const FillTroopsInput = ({
   useEffect(() => {
     const updatedTroops = selectedTroops.join(",");
     inputChangeHandler(whatField, updatedTroops);
-  }, [selectedTroops, whatField, inputChangeHandler]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedTroops]); // deps leads to rerender
 
   const handleTroopClick = (troop: string) => {
     setSelectedTroops((prevSelected) => {
@@ -61,7 +62,7 @@ export const FillTroopsInput = ({
             key={troop}
             className={`p-2 m-1 cursor-pointer rounded-xl border ${
               selectedTroops.includes(troop)
-                ? " bg-green-800 text-white"
+                ? " bg-blue-500 text-white"
                 : "bg-gray-200"
             }`}
             onClick={() => handleTroopClick(troop)}

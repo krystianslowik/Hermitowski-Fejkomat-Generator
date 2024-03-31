@@ -67,13 +67,14 @@ export const TroopsInput = ({
             </button>
           </div>
         ))}
-
-        <button
-          className="p-2 mt-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+        <div
+          className="flex flex-wrap justify-start items-center p-4 border bg-blue-500  hover:bg-blue-600 rounded-lg shadow my-2 cursor-pointer"
           onClick={() => setIsModalOpen(true)}
         >
-          {i18n("addTemplate")}
-        </button>
+          <span className="text-white w-full text-center">
+            {i18n("addTemplate")}
+          </span>
+        </div>
       </div>
 
       <Modal

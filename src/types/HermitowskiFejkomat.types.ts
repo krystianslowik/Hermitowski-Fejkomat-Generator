@@ -53,8 +53,6 @@ export type BlockingGlobal = {
   name: string;
 };
 
-export type Coords = [number, number];
-
 export interface FakingSettings {
   safeguard?: Troops;
   troops_templates?: Troops[];

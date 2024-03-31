@@ -5,7 +5,7 @@ import { defaultSettings } from "../../DefaultValues";
 
 type BooleanInputProps = {
   whatField: FejkomatKeys;
-  value: boolean; // Changed to boolean
+  value: boolean;
   inputChangeHandler: (whatField: FejkomatKeys, value: any) => void;
 };
 

@@ -6,8 +6,8 @@ import {
 } from "../../types/i18n.types";
 
 const translations: TranslationMap = {
-  safeguard: { en: "Safeguard", pl: "Ochrona" },
-  troops_templates: { en: "Troops Templates", pl: "Szablony Wojsk" },
+  safeguard: { en: "Safeguard", pl: "Zablokowane jednostki" },
+  troops_templates: { en: "Troops Templates", pl: "Szablony wojsk" },
   fill_exact: { en: "Fill Exact", pl: "Dokładne Wypełnienie" },
   players: { en: "Players (nick)", pl: "Gracze (nick)" },
   fill_troops: { en: "Fill troops", pl: "Uzupełnij wojsko" },
@@ -57,12 +57,12 @@ const translations: TranslationMap = {
     pl: "Błędne ID. Czy format to 11111,22222?",
   },
   safeguard_description: {
-    en: "Safeguard is a feature that provides protection or security measures.",
-    pl: "Zabezpieczenie to funkcja zapewniająca ochronę lub środki bezpieczeństwa.",
+    en: "Safeguard is a feature that provides protection for a specified amount of troops in the village.",
+    pl: "Zabezpieczenie podanej ilości wojsk w wiosce. Fejkomat będzie sprawdzał, czy w wiosce jest więcej niż określona liczba wojsk, jeśli nie, to dobierze inne jednostki.",
   },
   troops_templates_description: {
     en: "Troops Templates refers to predefined configurations or setups for military units.",
-    pl: "Szablony oddziałów odnoszą się do predefiniowanych konfiguracji lub ustawień dla jednostek wojskowych.",
+    pl: "Szablony wojsk odnoszą się do szablonów, z jakich powinien korzystać fejkomat. Wypełniając szablon, ustawiamy 'domyślną' konfigurację (np. Taran: 1)",
   },
   fill_exact_description: {
     en: "Fill Exact determines whether to fill in exactly the specified criteria.",
@@ -74,43 +74,43 @@ const translations: TranslationMap = {
   },
   coords_description: {
     en: "Coordinates represent the positions or locations specified by numerical values.",
-    pl: "Współrzędne reprezentują pozycje lub lokalizacje określone za pomocą wartości liczbowych.",
+    pl: "Współrzędne (koordy) wiosek, które powinny być fejkowane. Wioski powinny być oddzielone przecinkami (np. 555|134,512|442)",
   },
   players_description: {
     en: "Players refers to individuals or entities participating in a game or activity.",
-    pl: "Gracze odnoszą się do osób lub podmiotów uczestniczących w grze lub działalności.",
+    pl: "Pełne nicki graczy, którzy powinni być atakowani (np. Hermitowski,slovik). Fejkomat znajdzie i będzie ustawiał jako cele wioski podanych graczy.",
   },
   player_ids_description: {
-    en: "Player IDs are unique identifiers assigned to each player.",
-    pl: "ID graczy to unikalne identyfikatory przypisane do każdego gracza.",
+    en: "Player IDs are unique identifiers assigned to each player. Faking script will fill villages of this player into config.",
+    pl: "ID graczy to unikatowe identyfikatory każdego gracza (np. 921378123). Fejkomat znajdzie i będzie ustawiał jako cele wioski podanych graczy.",
   },
   allies_description: {
     en: "Allies are individuals or groups united for a common purpose or goal.",
-    pl: "Sojusznicy to osoby lub grupy zjednoczone w celu wspólnego celu lub celu.",
+    pl: "Pełne nazwy plemion, które powinny być atakowane (np. Jakieś plemię 123,Zespół supportu plemi0na). Fejkomat znajdzie i będzie ustawiał jako cele wioski nalezących do plemienia graczy.",
   },
   ally_ids_description: {
     en: "Ally IDs are unique identifiers assigned to each ally or allied group.",
-    pl: "ID sojuszników to unikalne identyfikatory przypisane do każdego sojusznika lub grupy sojuszniczej.",
+    pl: "ID plemienia to unikatowe identyfikatory każdego plemienia (np. 141). Fejkomat znajdzie i będzie ustawiał jako cele wioski nalezących do plemienia graczy.",
   },
   ally_tags_description: {
     en: "Ally Tags are descriptive labels or markers associated with allies or allied groups.",
-    pl: "Tagi sojuszników to opisowe etykiety lub znaczniki związane z sojusznikami lub grupami sojuszniczymi.",
+    pl: "Tagi sojuszników to 'krótkie nazwy' plemion. Fejkomat znajdzie i będzie ustawiał jako cele wioski nalezących do plemienia graczy.",
   },
   exclude_players_description: {
     en: "Exclude Players indicates which players should be omitted or not included.",
-    pl: "Wyklucz graczy określa, którzy gracze powinni być pominięci lub nie uwzględnieni.",
+    pl: "Gracze, którzy są wykluczeni nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani. ",
   },
   exclude_player_ids_description: {
-    en: "Exclude Player IDs are unique identifiers for players to be excluded from consideration.",
-    pl: "Wykluczone identyfikatory graczy to unikalne identyfikatory graczy, którzy mają zostać pominięci.",
+    en: "Players who are excluded will not be in the feycomat as targets. Players/tribes added here will be excluded from the feycomat and WILL NOT be attacked. ",
+    pl: "Gracze (ich ID), którzy są wykluczeni nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani. ",
   },
   exclude_allies_description: {
-    en: "Exclude Allies specifies which allies or allied groups should not be taken into account.",
-    pl: "Wyklucz sojuszników określa, którzy sojusznicy lub grupy sojusznicze nie powinny być uwzględniane.",
+    en: "Names of tribes that are excluded will not be in fejkomat as targets. Players/tribes added here will be excluded from fejkomat and WILL NOT be attacked. ",
+    pl: "Nazwy plemion, które są wykluczone nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani. ",
   },
   exclude_ally_tags_description: {
     en: "Exclude Ally Tags indicate descriptive labels or markers for excluded allies or allied groups.",
-    pl: "Wyklucz tagi sojuszników wskazują opisowe etykiety lub znaczniki dla wykluczonych sojuszników lub grup sojuszniczych.",
+    pl: "Tagi plemion, które są wykluczone nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani. ",
   },
   exclude_ally_ids_description: {
     en: "Exclude Ally IDs are unique identifiers for allies or allied groups to be excluded.",
@@ -126,7 +126,7 @@ const translations: TranslationMap = {
   },
   skip_night_bonus_description: {
     en: "Skip the night bonus (according to server settings).",
-    pl: "Omijaj bonus nocny (zgodny z ustawieniami serwera).",
+    pl: "Omijaj bonus nocny (zgodny z ustawieniami serwera). Jeśli zaznaczone, ataki będą ustawiane na godziny POZA bonusem nocnym.",
   },
   spear: { en: "Spear", pl: "Pikinier" },
   sword: { en: "Sword", pl: "Miecznik" },

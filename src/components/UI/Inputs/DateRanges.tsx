@@ -1,27 +1,12 @@
-import { ChangeEvent, ReactElement } from "react";
+import { FC } from "react";
 import { FejkomatKeys } from "../../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../../store/i18n";
-
-type NumbersInputProps = {
+type DateRangesInputProps = {
   whatField: FejkomatKeys;
-  value: string;
-  inputChangeHandler: (whatField: FejkomatKeys, value: string) => void;
-
-  setError: (value: string) => void;
+  inputChangeHandler?: (whatField: FejkomatKeys) => void;
 };
-
-export const Numbers = ({
-  whatField,
-  value,
-  inputChangeHandler,
-}: NumbersInputProps): ReactElement => {
+export const DateRangesInput: FC<DateRangesInputProps> = ({ whatField }) => {
   const { i18n } = useI18n();
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const adjustedValue = e.target.value.replace(" ", "");
-    inputChangeHandler(whatField, adjustedValue);
-  };
-
   return (
     <>
       <div className="relative flex max-w-1/2 p-4 border border-gray-300 bg-gray-50 rounded-lg shadow flex-col items-start">
@@ -32,13 +17,9 @@ export const Numbers = ({
           </div>
         </div>
         <input
+          type="datetime-local"
           className="rounded-lg block w-full p-2 mr-4 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-          name={whatField}
-          type="text"
-          value={value}
-          placeholder={i18n(whatField)}
-          onChange={handleChange}
-          maxLength={1499} //max 150 10char id's
+          onChange={(e) => console.log(e)}
         />
       </div>
     </>

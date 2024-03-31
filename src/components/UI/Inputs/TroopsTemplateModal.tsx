@@ -42,6 +42,8 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSave }) => {
     }
 
     onSave(template);
+    setTemplate({});
+    setError("");
     onClose();
   };
 
@@ -50,7 +52,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSave }) => {
   return (
     <div
       className={`fixed inset-0 z-20 bg-black bg-opacity-50 flex justify-center items-center ${
-        isOpen ? "" : "hidden"
+        isOpen || "hidden"
       }`}
     >
       <div className="bg-white p-4 rounded-lg shadow-lg w-3/4 md:w-1/2 lg:w-1/3">
@@ -59,8 +61,8 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSave }) => {
           <button onClick={onClose} className="text-lg font-semibold">
             {i18n("cancel")}
           </button>
+          {error && <InputError errorMessage={error} />}
         </div>
-        {error && <InputError errorMessage={error} />}
         <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {Object.keys(availableTroops).map((troopType) => (
             <div
