@@ -33,7 +33,7 @@ export const BooleanInput = ({
   return (
     <>
       <div className="p-4 border bg-gray-50 rounded-lg shadow md:flex flex-grow md:items-center md:flex-row">
-        <div className="flex-grow">
+        <div className="flex-grow mr-2">
           <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
           <div className="mb-2 text-sm text-gray-500">
             {i18n(`${whatField}_description`)}

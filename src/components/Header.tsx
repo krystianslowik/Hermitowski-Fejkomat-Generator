@@ -11,6 +11,8 @@ const Header: FC<HeaderProps> = ({ fejkomatSettings }) => {
   const { language, i18n, setLanguage } = useI18n();
   const filteredCode = useFilterCode(fejkomatSettings);
 
+  const logo = "/fejkomat-logo.png";
+
   const handleCopySettings = async () => {
     try {
       if (navigator.clipboard) {
@@ -34,7 +36,11 @@ const Header: FC<HeaderProps> = ({ fejkomatSettings }) => {
 
   return (
     <header className="bg-stone-200 text-stone-900 p-4 my-2 flex flex-wrap justify-around items-center rounded">
-      <div className="text-lg font-bold">Fejkomat generator</div>
+      <div className="flex items-center justify-center text-lg font-bold">
+        <img src={logo} alt="" width={32} />
+        <span className="ml-2">Fejkomat generator</span>
+      </div>
+
       <button
         onClick={handleCopySettings}
         className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
