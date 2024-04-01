@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Troops } from "../../../types/HermitowskiFejkomat.types";
-import { InputError } from "../Error";
 import { troopIcons } from "../../../assets/icons/TroopsIcons";
 
 import { useI18n } from "../../store/i18n";

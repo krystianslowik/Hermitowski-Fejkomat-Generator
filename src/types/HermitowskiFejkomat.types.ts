@@ -20,11 +20,6 @@ export interface Target {
   arrival_date: Date;
 }
 
-export interface FakingResult {
-  target: Target;
-  troops: Troops;
-}
-
 export interface BoundaryCircle {
   r: number;
   x: number;
@@ -38,8 +33,6 @@ export interface BoundaryBox {
   max_y: number;
 }
 
-export type DateRangePart = [number, number, number, number, number];
-export type DateRange = [DateRangePart, DateRangePart];
 export type BlockingLocal = {
   time_s: number;
   count: number;
@@ -51,6 +44,13 @@ export type BlockingGlobal = {
   count: number;
   block_players: boolean;
   name: string;
+};
+
+export type ForumConfig = {
+  thread_id: number;
+  page: number;
+  spoiler_name: string;
+  time_to_live_s: number;
 };
 
 export interface FakingSettings {
@@ -82,8 +82,8 @@ export interface FakingSettings {
   blocking_global?: BlockingGlobal[];
 
   skip_night_bonus?: boolean;
-  date_ranges?: DateRange[];
+  date_ranges?: string[];
 
   changing_village_enabled?: boolean;
-  forum_config?: any; //todo: check how that looks like
+  forum_config?: ForumConfig;
 }
