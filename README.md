@@ -1,6 +1,34 @@
-# Getting Started with Create React App
+# Hermitowski Fejkomat Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+
+The Hermitowski Fejkomat Generator is a specialized tool designed for generating and configuring the fejkomat script, tailored to enhance the gaming experience for players of "Plemiona" (Tribal Wars). This intuitive tool allows users to effortlessly create fejkomat settings, facilitating strategic planning and execution within the game.
+
+![Screenshot](https://i.ibb.co/56Qvd6J/image.png "Screenshot")
+
+## Features
+
+- **Generate Fejkomat Script:** Automatically generates the script needed for fejkomat operations within the game.
+- **Customizable Settings:** Offers a user-friendly interface for customizing various fejkomat settings to match individual or team strategies.
+- **Responsive Design:** Ensures a seamless experience across both desktop and mobile devices, enabling players to access the tool anytime, anywhere.
+- **Copy to Clipboard:** Easily copy the generated fejkomat settings to your clipboard with just one click, ensuring quick and error-free setup.
+
+## Usage
+
+1. **Access the Tool:** Navigate to the Hermitowski Fejkomat Generator on your preferred device.
+2. **Customize Settings:** Adjust the fejkomat settings according to your strategic needs.
+3. **Generate Script:** Once satisfied with the configurations, script is generated automatticaly.
+4. **Copy Settings:** Use the 'Copy to Clipboard' feature to copy the generated settings.
+5. **Deploy:** Paste the copied settings into your game setup to deploy the fejkomat script.
+
+## Support
+
+Encountered an issue or have suggestions? Feel free to reach out or open an issue on our repository to get the assistance you need.
+
+Enjoy strategizing with the Hermitowski Fejkomat Generator!
+
+---
+---
 
 ## Available Scripts
 
@@ -28,19 +56,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
