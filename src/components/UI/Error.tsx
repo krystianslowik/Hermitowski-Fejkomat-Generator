@@ -19,11 +19,11 @@ export const InputError: FC<ErrorProps> = ({ errorMessage }) => {
 
   return (
     <div
-      className={`absolute z-10  p-2 m-2 text-sm text-white font-semibold bg-red-600 rounded-md shadow-lg ${
+      className={`absolute z-10 top-full left-1 mt-[-10px] ml-2 p-2 text-sm text-white font-semibold bg-red-600 rounded-md shadow-lg before:content-[''] before:absolute before:bottom-full before:left-1 before:border-8 before:border-transparent before:border-b-red-600 ${
         shouldAnimate ? "animate-fadeIn" : ""
       }`}
     >
-      <span className="">{errorMessage}</span>
+      <span>{errorMessage}</span>
     </div>
   );
 };

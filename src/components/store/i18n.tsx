@@ -163,6 +163,18 @@ const translations: TranslationMap = {
     en: "Add exact date",
     pl: "Dodaj konkretną datę",
   },
+  outputTitle: {
+    en: "What is Faking script?",
+    pl: "Czym jest fejkomat?",
+  },
+  rawOutputTitle: {
+    en: "Raw output:",
+    pl: "Surowy skrypt:",
+  },
+  outputDescription: {
+    en: "The script is designed for automating form field completion in a strategic game setting, focusing on selecting troops and coordinates for attacks. Its primary functionality is centered on the battlefield interface, ensuring users are correctly positioned for their strategic actions. Should a village fall out of a dynamic group, the script attempts to navigate to the next available village within that group.    ",
+    pl: "Skrypt przeznaczony jest do automatyzacji wypełniania pól formularzy w strategicznych ustawieniach gry, koncentrując się na wyborze oddziałów i współrzędnych do ataków. Jego podstawowa funkcjonalność koncentruje się na interfejsie pola bitwy, zapewniając użytkownikom prawidłową pozycję do ich strategicznych działań. Jeśli wioska wypadnie z dynamicznej grupy, skrypt spróbuje przejść do następnej dostępnej wioski w tej grupie.    ",
+  },
 };
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);

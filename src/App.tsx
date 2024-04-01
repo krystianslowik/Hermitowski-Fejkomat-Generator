@@ -7,11 +7,10 @@ import { defaultSettings, fejkomatyFields } from "./components/DefaultValues";
 import { FejkomatKeys } from "./types/FejkomatValuesKeys.types";
 import { Output } from "./components/Output";
 import Header from "./components/Header";
+import { Footer } from "./components/Footer";
 function App() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [fejkomatSettings, setFejkomatSettings] =
     useState<FakingSettings>(defaultSettings);
-  if (fejkomatSettings) console.log(fejkomatSettings); // filler
 
   const setNewSettings = (key: FejkomatKeys, value: any): void => {
     console.log(key, value);
@@ -25,15 +24,16 @@ function App() {
 
   return (
     <>
-      <Header fejkomatSettings={fejkomatSettings} />
-      <div className="flex flex-col md:grid md:grid-cols-1 bg-slate-100  p-4 w-full overflow-hidden">
+      <div className="relative flex flex-col md:grid md:grid-cols-1 bg-slate-100 px-4 md:px-12 lg:px-24 py-4 w-full overflow-hidden">
+        <Header fejkomatSettings={fejkomatSettings} />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
           {fejkomatyFields.map((field) => (
             <Input valueToSet={setNewSettings} field={field} key={field} />
           ))}
         </div>
+        <Output code={fejkomatSettings} />
+        <Footer />
       </div>
-      <Output code={fejkomatSettings} />
     </>
   );
 }

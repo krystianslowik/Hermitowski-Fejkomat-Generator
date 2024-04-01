@@ -9,7 +9,7 @@ type PlaceholderProps = {
 export const Placeholder = ({ whatField }: PlaceholderProps): ReactElement => {
   const { i18n } = useI18n();
   return (
-    <div className="relative flex p-4 border border-gray-300 bg-gray-50 text-gray-300 rounded-lg shadow flex-col items-start">
+    <div className="relative flex flex-grow p-4 border border-gray-300 bg-gray-50 text-gray-300 rounded-lg shadow flex-col items-start">
       {/* Badge indicating availability soon */}
       <div className="absolute top-2 right-2 bg-yellow-500 text-white py-1 px-3 text-xs rounded-full">
         {i18n("availableSoon")}

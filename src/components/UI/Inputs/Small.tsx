@@ -1,17 +1,20 @@
 import { ChangeEvent, ReactElement } from "react";
 import { FejkomatKeys } from "../../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../../store/i18n";
+import { InputError } from "../Error";
 
 type SmallInputProps = {
   whatField: FejkomatKeys;
   value: string;
   inputChangeHandler: (whatField: FejkomatKeys, e: string) => void;
+  error: string;
 };
 
 export const SmallInput = ({
   whatField,
   value,
   inputChangeHandler,
+  error,
 }: SmallInputProps): ReactElement => {
   const { i18n } = useI18n();
 
@@ -21,7 +24,8 @@ export const SmallInput = ({
 
   return (
     <>
-      <div className="relative flex max-w-1/3 p-4 border border-gray-300 bg-gray-50 rounded-lg shadow flex-col items-start">
+      <div className="relative flex flex-grow max-w-1/3 p-4 border border-gray-300 bg-gray-50 rounded-lg shadow flex-col items-start">
+        {error && <InputError errorMessage={error} />}
         <div className="flex flex-col flex-grow">
           <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
           <div className="mb-2 w-full text-sm text-gray-500">

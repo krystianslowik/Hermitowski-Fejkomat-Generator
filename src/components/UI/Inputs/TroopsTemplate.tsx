@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Modal } from "./TroopsTemplateModal"; // Adjust import path as needed
 import { useI18n } from "../../store/i18n";
 import { Troops } from "../../../types/HermitowskiFejkomat.types";
+import { troopIcons } from "../../../assets/icons/TroopsIcons";
+
 import { FejkomatKeys } from "../../../types/FejkomatValuesKeys.types";
 
 type TroopsInputProps = {
@@ -31,14 +33,14 @@ export const TroopsInput = ({
   };
 
   return (
-    <div className="relative flex flex-col p-4 border border-gray-300 bg-gray-50 rounded-lg shadow max-h-[250px] overflow-hidden">
+    <div className="relative flex flex-col flex-grow p-4 border border-gray-300 bg-gray-50 rounded-lg shadow min-h-[120px] max-h-[245px] overflow-hidden justify-between">
       <div className="mb-2">
         <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
         <div className="w-full text-sm text-gray-500">
           {i18n(`${whatField}_description`)}
         </div>
       </div>
-      <div className="flex-grow overflow-auto">
+      <div className="overflow-auto align-middle max-h-[180px]">
         {templates.map((template, index) => (
           <div
             key={index}
@@ -52,10 +54,14 @@ export const TroopsInput = ({
                   key={troopType}
                   className="p-2 m-1 rounded bg-gray-100 text-center"
                 >
-                  <span className="text-xs">
-                    {`${i18n(troopType)}:`}{" "}
-                    <span className=" font-bold"> {troopCount}</span>
-                  </span>
+                  <div className="flex flex-col items-center text-xs">
+                    <img
+                      src={troopIcons[troopType]}
+                      alt={i18n(troopType)}
+                      width={20}
+                    />
+                    <span className="font-bold "> {troopCount}</span>
+                  </div>
                 </div>
               ) : null;
             })}
@@ -68,7 +74,7 @@ export const TroopsInput = ({
           </div>
         ))}
         <div
-          className="flex flex-wrap justify-start items-center p-4 border bg-blue-500  hover:bg-blue-600 rounded-lg shadow my-2 cursor-pointer"
+          className="flex flex-wrap justify-start items-center p-4 border bg-stone-500  hover:bg-stone-600 rounded-lg shadow my-2 cursor-pointer"
           onClick={() => setIsModalOpen(true)}
         >
           <span className="text-white w-full text-center">

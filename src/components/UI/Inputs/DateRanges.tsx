@@ -42,7 +42,7 @@ export const DateRangesInput: FC<DateRangesInputProps> = ({
   };
 
   return (
-    <div className="relative flex flex-col p-4 border border-gray-300 bg-gray-50 rounded-lg shadow">
+    <div className="relative flex flex-col p-4 border border-gray-300 bg-gray-50 rounded-lg max-h-[250px] overflow-hidden shadow">
       <div className="mb-2">
         <span className="text-lg font-bold">{i18n(whatField)}</span>
         <div className="w-full text-sm text-gray-500">
@@ -53,7 +53,7 @@ export const DateRangesInput: FC<DateRangesInputProps> = ({
         {dateRanges.map((range, index) => (
           <div
             key={index}
-            className="flex justify-between items-center p-2 border bg-gray-50 rounded-lg shadow my-2"
+            className="flex justify-between items-center p-2 border bg-gray-50 rounded-lg shadow my-2 text-sm"
           >
             <span>{range}</span>
             <button
@@ -104,7 +104,7 @@ export const DateRangesInput: FC<DateRangesInputProps> = ({
               />
               <button
                 onClick={handleAddDateRange}
-                className="ml-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="ml-2 bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded"
               >
                 {i18n("add")}
               </button>
@@ -113,7 +113,7 @@ export const DateRangesInput: FC<DateRangesInputProps> = ({
         )}
         {!showInput && (
           <div
-            className="flex justify-center items-center p-4 border bg-blue-500 hover:bg-blue-600 rounded-lg shadow my-2 cursor-pointer"
+            className="flex justify-center items-center p-4 border bg-stone-500 hover:bg-stone-600 rounded-lg shadow my-2 cursor-pointer"
             onClick={handleAddClick}
           >
             <span className="text-white text-center">

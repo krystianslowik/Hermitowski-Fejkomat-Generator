@@ -1,43 +1,30 @@
 import React from "react";
 import { FakingSettings } from "../types/HermitowskiFejkomat.types";
-import { FejkomatKeys } from "../types/FejkomatValuesKeys.types";
+import { useI18n } from "./store/i18n";
+import { useFilterCode } from "../helper/CodeFilter";
 
 type OutputProps = {
   code: FakingSettings;
 };
 
 export const Output = ({ code }: OutputProps) => {
-  const filteredCode = Object.entries(code).reduce(
-    (acc: Partial<FakingSettings>, [key, value]) => {
-      if (
-        value !== undefined && // remove undefined
-        value !== "" && // remove empty
-        !(Array.isArray(value) && value.length === 0) && // remove empty arrays
-        !(
-          typeof value === "object" &&
-          value !== null &&
-          Object.keys(value).length === 0
-        ) // remove empty objects
-      ) {
-        const validKey = key as FejkomatKeys;
-        acc[validKey] = value;
-      }
-      return acc;
-    },
-    {} as FakingSettings
-  );
+  const { i18n } = useI18n();
+  const filteredCode = useFilterCode(code);
 
   return (
     <>
-      <pre>
-        <code>
-          {"javascript: var HermitowskieFejki = "}
-          {JSON.stringify(filteredCode, null, 4)}
-          {
-            "; $.ajax('https://media.innogamescdn.com/com_DS_PL/skrypty/HermitowskieFejki.js?_='+~~(Date.now()/9e6),{cache:1,dataType:'script'}); void (0);"
-          }
-        </code>
-      </pre>
+      <div className="bg-stone-200 text-stone-900 p-4 my-2 flex flex-col rounded">
+        <div className="text-2xl font-bold">{i18n("outputTitle")}</div>
+        <div className="w-full md:w-full lg:w-2/3 xl:w-1/2 my-4">
+          {i18n("outputDescription")}
+        </div>
+        <div className="">
+          <div className="text-xl font-bold">{i18n("rawOutputTitle")}</div>
+          <pre className="border-2 border-solid border-stone-500 p-4 w-full sm:w-full lg:w-full xl:w-2/3 whitespace-pre-wrap break-words text-sm">
+            <code>{filteredCode}</code>
+          </pre>
+        </div>
+      </div>
     </>
   );
 };

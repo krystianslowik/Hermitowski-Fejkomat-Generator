@@ -1,19 +1,20 @@
 import { ChangeEvent, ReactElement } from "react";
 import { FejkomatKeys } from "../../../types/FejkomatValuesKeys.types";
 import { useI18n } from "../../store/i18n";
+import { InputError } from "../Error";
 
 type CoordsInputProps = {
   whatField: FejkomatKeys;
   value: string;
   inputChangeHandler: (whatField: FejkomatKeys, value: string) => void;
-  setError: (value: string) => void;
+  error: string;
 };
 
 export const Coords = ({
   whatField,
   value,
   inputChangeHandler,
-  setError,
+  error,
 }: CoordsInputProps): ReactElement => {
   const { i18n } = useI18n();
 
@@ -23,7 +24,8 @@ export const Coords = ({
   };
 
   return (
-    <div className="relative flex flex-col p-4 border border-gray-300 bg-gray-50 rounded-lg shadow h-full">
+    <div className="relative flex flex-grow flex-col p-4 border border-gray-300 bg-gray-50 rounded-lg shadow h-full">
+      {error && <InputError errorMessage={error} />}
       <div className="mb-2">
         <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
         <div className="w-full text-sm text-gray-500">

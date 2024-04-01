@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { InputError } from "../Error";
 import { Troops } from "../../../types/HermitowskiFejkomat.types";
+import { InputError } from "../Error";
+import { troopIcons } from "../../../assets/icons/TroopsIcons";
+
 import { useI18n } from "../../store/i18n";
 
 type ModalProps = {
@@ -61,17 +63,17 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSave }) => {
           <button onClick={onClose} className="text-lg font-semibold">
             {i18n("cancel")}
           </button>
-          {error && <InputError errorMessage={error} />}
         </div>
         <div className="flex flex-wrap w-full justify-around">
           {Object.keys(availableTroops).map((troopType) => (
             <div
               key={troopType}
-              className="flex flex-col m-2 p-2 rounded-lg bg-gray-100 shadow w-36"
+              className="flex flex-col items-center m-2 p-2 rounded-lg bg-gray-100 shadow w-36"
             >
-              <span className="text-sm font-medium text-gray-700">
-                {i18n(troopType)}
-              </span>
+              <div className="flex text-sm font-medium text-gray-700">
+                <img src={troopIcons[troopType]} alt="" width={20} />
+                <span className="ml-2"> {i18n(troopType)} </span>
+              </div>
               <input
                 type="number"
                 className="mt-1 w-full text-center rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50"
@@ -87,8 +89,13 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSave }) => {
             </div>
           ))}
         </div>
+        {error && (
+          <div className="mt-2 w-full text-sm text-center text-red-500 font-semibold">
+            {error}
+          </div>
+        )}
         <button
-          className="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="mt-4 w-full bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded"
           onClick={handleSave}
         >
           {i18n("saveTemplate")}
