@@ -50,4 +50,5 @@ export const fejkomatyFields: FejkomatKeys[] = [
   "blocking_enabled",
   "blocking_local",
   "blocking_global",
+  "forum_config",
 ];

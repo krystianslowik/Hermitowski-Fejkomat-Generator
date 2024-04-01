@@ -17,24 +17,25 @@ const translations: TranslationMap = {
   ally_tags: { en: "Ally Tags", pl: "Plemiona (tag)" },
   ally_ids: { en: "Ally IDs", pl: "Plemiona (ID)" },
   exclude_players: { en: "Exclude Players", pl: "Wyklucz graczy" },
-  exclude_player_ids: { en: "Exclude Player IDs", pl: "Wyklucz ID graczy" },
+  exclude_player_ids: { en: "Exclude Player IDs", pl: "Wyklucz graczy (ID)" },
   exclude_allies: { en: "Exclude Allies", pl: "Wyklucz plemiona" },
   exclude_ally_tags: { en: "Exclude Ally Tags", pl: "Wyklucz tagi plemion" },
-  exclude_ally_ids: { en: "Exclude Ally IDs", pl: "Wyklucz ID plemion" },
+  exclude_ally_ids: { en: "Exclude Ally IDs", pl: "Wyklucz plemiona (ID)" },
   include_barbarians: {
     en: "Include Barbarians",
-    pl: "Uwzględnij barbarzyńców",
+    pl: "Uwzględnij wioski barbarzyńskie",
   },
   boundaries_circle: { en: "Boundaries (Circle)", pl: "Granice (koło)" },
   boundaries_box: { en: "Boundaries (Box)", pl: "Granice (prostokąt)" },
-  blocking_enabled: { en: "Blocking Enabled", pl: "Blokowanie włączone" },
+  blocking_enabled: { en: "Blocking Enabled", pl: "Blokowanie" },
   blocking_local: { en: "Local Blocking", pl: "Blokada lokalna" },
   blocking_global: { en: "Global Blocking", pl: "Blokada globalna" },
   skip_night_bonus: { en: "Skip Night Bonus", pl: "Pomiń bonus nocny" },
   date_ranges: { en: "Date Ranges", pl: "Zakresy dat" },
+  forum_config: { en: "Forum config", pl: "Konfigurazja z forum" },
   changing_village_enabled: {
-    en: "Changing Village Enabled",
-    pl: "Zmiana wioski włączona",
+    en: "Changing Village ",
+    pl: "Zmiana wioski",
   },
   errorEmptyInput: {
     en: "Input cannot be empty.",
@@ -50,58 +51,58 @@ const translations: TranslationMap = {
   },
   errorCoordsInvalid: {
     en: "Wrong coords. Format is XXX|YYY?",
-    pl: "Błędne koordy. Czy format to XXX|YYY?",
+    pl: "Błędne koordy. Czy format to XXX|YYY,XXX|ZZZ?",
   },
   errorNumberInvalid: {
     en: "Wrong ID. Format is 111111,222222?",
     pl: "Błędne ID. Czy format to 11111,22222?",
   },
   safeguard_description: {
-    en: "Safeguard is a feature that provides protection for a specified amount of troops in the village.",
+    en: "Securing the specified number of troops in the village. The sealer will check if there are more than the specified number of troops in the village, if not, it will select other units.",
     pl: "Zabezpieczenie podanej ilości wojsk w wiosce. Fejkomat będzie sprawdzał, czy w wiosce jest więcej niż określona liczba wojsk, jeśli nie, to dobierze inne jednostki.",
   },
   troops_templates_description: {
-    en: "Troops Templates refers to predefined configurations or setups for military units.",
+    en: "The army templates refer to the templates that the fey should use. When filling out a template, set a 'default' configuration (e.g. Taran: 1).",
     pl: "Szablony wojsk odnoszą się do szablonów, z jakich powinien korzystać fejkomat. Wypełniając szablon, ustawiamy 'domyślną' konfigurację (np. Taran: 1)",
   },
   fill_exact_description: {
-    en: "Fill Exact determines whether to fill in exactly the specified criteria.",
-    pl: "Wypełnij dokładnie określa, czy ma być wypełnione dokładnie określone kryteria.",
+    en: "Fill in exactly specifies to fill in exactly as the template predicts.",
+    pl: "Wypełnij dokładnie określa, czy ma być wypełnione dokładnie tak, jak przewiduje szablon.",
   },
   fill_troops_description: {
     en: "Decide which troops should be filled with the fey.",
     pl: "Zdecyduj, jakimi typami wojsk powinien zostać wypełniony fejkomat.",
   },
   coords_description: {
-    en: "Coordinates represent the positions or locations specified by numerical values.",
+    en: "Coordinates (coordinates) of the villages that should be feinted. Villages should be separated by commas (e.g. 555|134,512|442).",
     pl: "Współrzędne (koordy) wiosek, które powinny być fejkowane. Wioski powinny być oddzielone przecinkami (np. 555|134,512|442)",
   },
   players_description: {
-    en: "Players refers to individuals or entities participating in a game or activity.",
+    en: "Full nicknames of players who should be attacked (e.g. Hermitowski,slovik). Fejkomat will find and set as targets the villages of the specified players.",
     pl: "Pełne nicki graczy, którzy powinni być atakowani (np. Hermitowski,slovik). Fejkomat znajdzie i będzie ustawiał jako cele wioski podanych graczy.",
   },
   player_ids_description: {
-    en: "Player IDs are unique identifiers assigned to each player. Faking script will fill villages of this player into config.",
+    en: "Player IDs are unique identifiers for each player (e.g. 921378123). Pheykomat will find and set the villages of the specified players as targets.",
     pl: "ID graczy to unikatowe identyfikatory każdego gracza (np. 921378123). Fejkomat znajdzie i będzie ustawiał jako cele wioski podanych graczy.",
   },
   allies_description: {
-    en: "Allies are individuals or groups united for a common purpose or goal.",
+    en: "The full names of the tribes that should be attacked (e.g. Some tribe 123,Support team plemi0na). Fejkomat will find and set as targets the villages of the players belonging to the tribe.",
     pl: "Pełne nazwy plemion, które powinny być atakowane (np. Jakieś plemię 123,Zespół supportu plemi0na). Fejkomat znajdzie i będzie ustawiał jako cele wioski nalezących do plemienia graczy.",
   },
   ally_ids_description: {
-    en: "Ally IDs are unique identifiers assigned to each ally or allied group.",
+    en: "Tribe IDs are unique identifiers for each tribe (e.g. 141). Pheykomat will find and set as targets the villages of the players belonging to the tribe.",
     pl: "ID plemienia to unikatowe identyfikatory każdego plemienia (np. 141). Fejkomat znajdzie i będzie ustawiał jako cele wioski nalezących do plemienia graczy.",
   },
   ally_tags_description: {
-    en: "Ally Tags are descriptive labels or markers associated with allies or allied groups.",
+    en: "Allied tags are 'short names' of tribes. The fey will find and set as targets the villages of the players belonging to the tribe.",
     pl: "Tagi sojuszników to 'krótkie nazwy' plemion. Fejkomat znajdzie i będzie ustawiał jako cele wioski nalezących do plemienia graczy.",
   },
   exclude_players_description: {
-    en: "Exclude Players indicates which players should be omitted or not included.",
+    en: "Players who are excluded will not be in the feycomat as targets. Players/lemons added here will be excluded from the feycomat and WILL NOT be attacked. ",
     pl: "Gracze, którzy są wykluczeni nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani. ",
   },
   exclude_player_ids_description: {
-    en: "Players who are excluded will not be in the feycomat as targets. Players/tribes added here will be excluded from the feycomat and WILL NOT be attacked. ",
+    en: "Players (their IDs) who are excluded will not be in the feycomat as targets. Players/players added here will be excluded from the feycomat and WILL NOT be attacked. ",
     pl: "Gracze (ich ID), którzy są wykluczeni nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani. ",
   },
   exclude_allies_description: {
@@ -113,23 +114,23 @@ const translations: TranslationMap = {
     pl: "Zakresy dat, w których powinny odbywać się ataki. Mozna ustawić konkretne daty lub wyłącznie godziny, w których powinny dochodzić ataki. ",
   },
   exclude_ally_tags_description: {
-    en: "Exclude Ally Tags indicate descriptive labels or markers for excluded allies or allied groups.",
+    en: "The tags of tribes that are excluded will not be in the feycomat as targets. Players/tribes added here will be excluded from the feycomat and WILL NOT be attacked. ",
     pl: "Tagi plemion, które są wykluczone nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani. ",
   },
   exclude_ally_ids_description: {
-    en: "Exclude Ally IDs are unique identifiers for allies or allied groups to be excluded.",
-    pl: "Wykluczone identyfikatory sojuszników to unikalne identyfikatory sojuszników lub grup sojuszniczych, które mają zostać wykluczone.",
+    en: "Excluded alliance identifiers are the unique identifiers of the allies or alliance groups to be excluded.",
+    pl: "Wykluczone identyfikatory plemion, które nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani.",
   },
   include_barbarians_description: {
-    en: "Include Barbarians determines whether to include barbarian units or entities.",
-    pl: "Uwzględnij barbarzyńców określa, czy uwzględniać jednostki lub podmioty barbarzyńskie.",
+    en: "Barbadian villages can be added to the feycom as targets. The setting determines whether they should be selected as targets. If selected, Barbazin villages will be in the target pool.",
+    pl: "Do fejkomatu mozna dodac jako cele wioski barbazynskie. To ustawienie decyduje, czy powinny byc wybierane jako cele. Jezli zaznaczone, wioski barbazynskie będą w puli celów.",
   },
   changing_village_enabled_description: {
     en: "Change the village after every peycomat call. Speeds up the fejking process.",
     pl: "Zmieniaj wioskę po kadym wywołaniu fejkomatu. Przyspiesza proces fejkowania.",
   },
   skip_night_bonus_description: {
-    en: "Skip the night bonus (according to server settings).",
+    en: "Bypass night bonus (according to server settings). If checked, attacks will be set to hours AFTER the night bonus.",
     pl: "Omijaj bonus nocny (zgodny z ustawieniami serwera). Jeśli zaznaczone, ataki będą ustawiane na godziny POZA bonusem nocnym.",
   },
   spear: { en: "Spear", pl: "Pikinier" },
@@ -172,8 +173,12 @@ const translations: TranslationMap = {
     pl: "Surowy skrypt:",
   },
   outputDescription: {
-    en: "The script is designed for automating form field completion in a strategic game setting, focusing on selecting troops and coordinates for attacks. Its primary functionality is centered on the battlefield interface, ensuring users are correctly positioned for their strategic actions. Should a village fall out of a dynamic group, the script attempts to navigate to the next available village within that group.    ",
-    pl: "Skrypt przeznaczony jest do automatyzacji wypełniania pól formularzy w strategicznych ustawieniach gry, koncentrując się na wyborze oddziałów i współrzędnych do ataków. Jego podstawowa funkcjonalność koncentruje się na interfejsie pola bitwy, zapewniając użytkownikom prawidłową pozycję do ich strategicznych działań. Jeśli wioska wypadnie z dynamicznej grupy, skrypt spróbuje przejść do następnej dostępnej wioski w tej grupie.    ",
+    en: "Fejkomat is a script for the game Tribes, automating the sending of attacks from the square. It allows you to select random villages from a preset pool, select troops according to criteria, bypass the night bonus, schedule attacks on specific days or times, and target villages of specific players. The script can use army templates ('basics') and select units up to a limit of spooks ('complements'). It works in two stages: first it selects troops and then draws a village to attack. The fey saves a lot of time in Tribes, is easy to set up and gives you a lot of control over the attacks you send. However, it still requires you to make strategic decisions about targets and troops. ",
+    pl: "Fejkomat to skrypt do gry Plemiona, automatyzujący wysyłanie ataków z placu. Pozwala wybierać losowe wioski z zadanej puli, dobierać wojska według kryteriów, omijać bonus nocny, planować ataki w określonych dniach lub porach oraz celować w wioski konkretnych graczy. Skrypt potrafi stosować szablony wojsk ('podstawki') i dobierać jednostki do limitu straszaków ('dopełnienie'). Działa dwuetapowo: najpierw wybiera wojska, a potem losuje wioskę do ataku. Fejkomat znacznie oszczędza czas w Plemionach, jest łatwy w ustawieniu i daje dużą kontrolę nad wysyłanymi atakami. Nadal jednak wymaga od Ciebie podejmowania strategicznych decyzji o celach i wojskach. ",
+  },
+  copyScript: {
+    en: "Copy faking script",
+    pl: "Kopiuj skrypt",
   },
 };
 

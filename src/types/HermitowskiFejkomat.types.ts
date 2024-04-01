@@ -84,5 +84,6 @@ export interface FakingSettings {
   skip_night_bonus?: boolean;
   date_ranges?: DateRange[];
 
-  changing_village_enabled: boolean;
+  changing_village_enabled?: boolean;
+  forum_config?: any; //todo: check how that looks like
 }

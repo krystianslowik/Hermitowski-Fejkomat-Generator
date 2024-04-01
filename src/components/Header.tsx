@@ -8,7 +8,7 @@ type HeaderProps = {
 };
 
 const Header: FC<HeaderProps> = ({ fejkomatSettings }) => {
-  const { language, setLanguage } = useI18n();
+  const { language, i18n, setLanguage } = useI18n();
   const filteredCode = useFilterCode(fejkomatSettings);
 
   const handleCopySettings = async () => {
@@ -39,7 +39,7 @@ const Header: FC<HeaderProps> = ({ fejkomatSettings }) => {
         onClick={handleCopySettings}
         className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
       >
-        Kopiuj ustawienia fejkomatu
+        {i18n("copyScript")}
       </button>
       <button
         onClick={() => setLanguage(language === "pl" ? "en" : "pl")}

@@ -22,4 +22,5 @@ export type FejkomatKeys =
   | "blocking_global"
   | "skip_night_bonus"
   | "date_ranges"
-  | "changing_village_enabled";
+  | "changing_village_enabled"
+  | "forum_config";
