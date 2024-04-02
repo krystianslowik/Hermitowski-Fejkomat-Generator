@@ -33,7 +33,7 @@ export const TroopsInput = ({
   };
 
   return (
-    <div className="relative flex flex-col flex-grow p-4 border border-gray-300 bg-gray-50 rounded-lg shadow min-h-[120px] max-h-[245px] overflow-hidden justify-between">
+    <div className=" relative flex max-h-[245px] min-h-[120px] flex-grow flex-col justify-between overflow-hidden rounded-lg border border-gray-300 bg-gray-50 p-4 shadow">
       <div className="mb-2">
         <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
         <div className="w-full text-sm text-gray-500">
@@ -44,7 +44,7 @@ export const TroopsInput = ({
         {templates.map((template, index) => (
           <div
             key={index}
-            className="flex flex-wrap justify-start items-center p-4 border bg-gray-50 rounded-lg shadow my-2"
+            className="my-2 flex flex-wrap items-center justify-start rounded-lg border bg-gray-50 p-4 shadow"
           >
             {Object.keys(template).map((troopType) => {
               const key = troopType as keyof Troops;
