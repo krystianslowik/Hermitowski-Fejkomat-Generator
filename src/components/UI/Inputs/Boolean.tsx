@@ -46,7 +46,7 @@ export const BooleanInput = ({
               name={whatField}
               id={whatField}
               checked={isChecked}
-              onChange={handleChange} // Updated to use handleChange
+              onChange={handleChange} // test commit
               className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
             />
             <label
