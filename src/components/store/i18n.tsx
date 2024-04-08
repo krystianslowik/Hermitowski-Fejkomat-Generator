@@ -122,8 +122,8 @@ const translations: TranslationMap = {
     pl: "Wykluczone identyfikatory plemion, które nie będą się znajdować w fejkomacie jako cele. Gracze/plemiona dodane tutaj będą wykluczeni z fejkomatu i NIE BĘDĄ atakowani.",
   },
   include_barbarians_description: {
-    en: "Barbadian villages can be added to the feycom as targets. The setting determines whether they should be selected as targets. If selected, Barbazin villages will be in the target pool.",
-    pl: "Do fejkomatu mozna dodac jako cele wioski barbazynskie. To ustawienie decyduje, czy powinny byc wybierane jako cele. Jezli zaznaczone, wioski barbazynskie będą w puli celów.",
+    en: "Barbadian villages can be added to the feycom as targets. The setting determines whether they should be selected as targets. If selected, barbarian villages will be in the target pool.",
+    pl: "Do fejkomatu mozna dodac jako cele wioski barbarzynskie. To ustawienie decyduje, czy powinny byc wybierane jako cele. Jezli zaznaczone, wioski barbarzynskie będą w puli celów.",
   },
   changing_village_enabled_description: {
     en: "Change the village after every peycomat call. Speeds up the fejking process.",
