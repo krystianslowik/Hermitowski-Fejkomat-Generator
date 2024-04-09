@@ -22,11 +22,27 @@ export const DateRangesInput: FC<DateRangesInputProps> = ({
     setShowInput(true);
   };
 
-  const handleAddDateRange = () => {
+  const handleAddDateRange = (): void => {
     if (startValue && endValue) {
-      const newRange = `${startValue} - ${endValue}`;
+      const convertDateFormat = (dateString: string): string => {
+        const [datePart, timePart] = dateString.split(" ");
+        const [year, month, day] = datePart.split("-");
+        return `${day}.${month}.${year} ${timePart}`;
+      };
+
+      let formattedStartValue = startValue;
+      let formattedEndValue = endValue;
+
+      if (isDateTime) {
+        formattedStartValue = convertDateFormat(startValue);
+        formattedEndValue = convertDateFormat(endValue);
+      }
+
+      const newRange = `${formattedStartValue} - ${formattedEndValue}`;
+
       const updatedDateRanges = [...dateRanges, newRange];
       setDateRanges(updatedDateRanges);
+
       inputChangeHandler(whatField, updatedDateRanges);
 
       setStartValue("");
