@@ -1,16 +1,16 @@
-name: Build and Deploy to krystianslowik.com
+name: Build and Deploy to plemiona.app
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
       build-artifact: ${{ steps.upload_artifact.outputs.download-path }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,15 +18,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'
-          cache: 'npm'
+          node-version: "18.x"
+          cache: "npm"
 
       - name: Install Dependencies
         run: npm install
 
       - name: Build
-        run: |
-          REACT_APP_OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} CI=false npm run build
+        run: npm run build
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
@@ -53,4 +52,3 @@ jobs:
           DEPLOY_PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
         run: |
           sshpass -p $DEPLOY_PASSWORD rsync -r -e 'ssh -o StrictHostKeyChecking=no -p 40022' ./build/ serwer225080@serwer225080.lh.pl:/home/platne/serwer225080/public_html/plemiona_app/
-
