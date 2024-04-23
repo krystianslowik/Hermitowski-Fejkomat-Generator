@@ -3,7 +3,7 @@ name: Build and Deploy to plemiona.app
 on:
   push:
     branches:
-      - autodeploy
+      - master
 
 jobs:
   build:
@@ -41,12 +41,6 @@ jobs:
         with:
           name: build-artifacts
           path: .
-
-      - name: List root directory
-        run: ls -la
-
-      - name: List detailed directory structure
-        run: find . -print
 
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
