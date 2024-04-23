@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -39,6 +40,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
+          path: .
+
+      - name: List root directory
+        run: ls -la
+
+      - name: List detailed directory structure
+        run: find . -print
 
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
