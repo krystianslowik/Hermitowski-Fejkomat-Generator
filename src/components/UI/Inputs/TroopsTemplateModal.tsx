@@ -70,13 +70,23 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSave }) => {
               className="flex flex-col items-center m-2 p-2 rounded-lg bg-gray-100 shadow w-36"
             >
               <div className="flex text-sm font-medium text-gray-700">
-                <img src={troopIcons[troopType]} alt="" width={20} />
-                <span className="ml-2"> {i18n(troopType)} </span>
+                {troopIcons[troopType] ? (
+                  <img
+                    src={troopIcons[troopType]}
+                    alt=""
+                    width={32}
+                    height={32}
+                  />
+                ) : (
+                  <span className="h-8 flex align-middle items-center font-bold">
+                    {i18n(troopType)}
+                  </span>
+                )}
               </div>
               <input
                 type="number"
                 className="mt-1 w-full text-center rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50"
-                value={template[troopType as keyof Troops] || ""}
+                value={template[troopType as keyof Troops] ?? ""}
                 onChange={(e) =>
                   handleChange(
                     troopType as keyof Troops,
