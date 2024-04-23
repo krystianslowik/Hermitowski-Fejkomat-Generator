@@ -71,15 +71,26 @@ export const FillTroopsInput = ({
             onClick={() => handleTroopClick(troop)}
           >
             {selectedTroops.includes(troop) ? (
-              <img src={troopIcons[troop]} alt={i18n(troop)} width={20} />
+              <>
+                <img
+                  src={troopIcons[troop]}
+                  alt={i18n(troop)}
+                  width={24}
+                  height={24}
+                />
+                <span className="ml-2 font-bold">{i18n(troop)}</span>
+              </>
             ) : (
-              <img
-                src={troopIconsBlocked[troop]}
-                alt={i18n(troop)}
-                width={20}
-              />
+              <>
+                <img
+                  src={troopIconsBlocked[troop]}
+                  alt={i18n(troop)}
+                  height={24}
+                  width={24}
+                />
+                <span className="ml-2">{i18n(troop)}</span>
+              </>
             )}
-            <span className="ml-2">{i18n(troop)}</span>
           </div>
         ))}
       </div>
