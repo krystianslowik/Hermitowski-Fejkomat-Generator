@@ -1,5 +1,7 @@
 # Hermitowski Fejkomat Generator
+
 [![Build and Deploy to plemiona.app](https://github.com/krystianslowik/Hermitowski-Fejkomat-Generator/actions/workflows/deploy_and_release.yml/badge.svg)](https://github.com/krystianslowik/Hermitowski-Fejkomat-Generator/actions/workflows/deploy_and_release.yml)
+
 ## Overview
 
 The Hermitowski Fejkomat Generator is a specialized tool designed for generating and configuring the fejkomat script, tailored to enhance the gaming experience for players of "Plemiona" (Tribal Wars). This intuitive tool allows users to effortlessly create fejkomat settings, facilitating strategic planning and execution within the game.
@@ -28,6 +30,7 @@ Encountered an issue or have suggestions? Feel free to reach out or open an issu
 Enjoy strategizing with the Hermitowski Fejkomat Generator!
 
 ---
+
 ---
 
 ## Available Scripts
@@ -56,3 +59,5 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+(rebuild)
