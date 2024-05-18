@@ -180,6 +180,18 @@ const translations: TranslationMap = {
     en: "Copy faking script",
     pl: "Kopiuj skrypt",
   },
+  accept: {
+    en: "Accept",
+    pl: "Akceptuj",
+  },
+  reject: {
+    en: "Reject",
+    pl: "Odrzuć",
+  },
+  cookieContestText: {
+    en: "We use cookies to improve your experience. By using our site, you consent to cookies.",
+    pl: "Używamy plików cookie, aby poprawić Twoje wrażenia. Korzystając z tej witryny, wyrażasz zgodę na pliki cookie.",
+  },
 };
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);

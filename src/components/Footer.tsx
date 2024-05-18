@@ -1,3 +1,5 @@
+import Consent from "./Consent";
+
 export const Footer = () => {
   return (
     <footer className="text-sm flex justify-center items-center py-2">
@@ -10,6 +12,7 @@ export const Footer = () => {
           GitHub
         </a>
       </div>
+      <Consent />
     </footer>
   );
 };
