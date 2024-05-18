@@ -189,8 +189,8 @@ const translations: TranslationMap = {
     pl: "Odrzuć",
   },
   cookieContestText: {
-    en: "We use cookies to improve your experience. By using our site, you consent to cookies.",
-    pl: "Używamy plików cookie, aby poprawić Twoje wrażenia. Korzystając z tej witryny, wyrażasz zgodę na pliki cookie.",
+    en: "We use cookies and analytics to improve your experience. By using our site, you consent to this.",
+    pl: "Używamy plików cookie i analityki, aby poprawić Twoje wrażenia. Korzystając z tej witryny, wyrażasz na to zgodę.",
   },
 };
 
