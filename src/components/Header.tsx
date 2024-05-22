@@ -2,6 +2,7 @@ import { FC } from "react";
 import { FakingSettings } from "../types/HermitowskiFejkomat.types";
 import { useI18n } from "./store/i18n";
 import { useFilterCode } from "../helper/CodeFilter";
+import BuyMeACoffeeButton from "./UI/BuyMeCoffee";
 
 type HeaderProps = {
   fejkomatSettings: FakingSettings;
@@ -66,6 +67,7 @@ const Header: FC<HeaderProps> = ({ fejkomatSettings }) => {
             />
           </svg>
         </button>
+        <BuyMeACoffeeButton />
       </div>
     </header>
   );

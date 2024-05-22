@@ -192,6 +192,10 @@ const translations: TranslationMap = {
     en: "We use cookies and analytics to improve your experience. By using our site, you consent to this.",
     pl: "Używamy plików cookie i analityki, aby poprawić Twoje wrażenia. Korzystając z tej witryny, wyrażasz na to zgodę.",
   },
+  buyMeCoffee: {
+    pl: "Kup mi kawkie!",
+    en: "Buy me coffee",
+  },
 };
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
