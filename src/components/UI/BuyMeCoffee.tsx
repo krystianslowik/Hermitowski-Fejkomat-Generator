@@ -15,7 +15,7 @@ const BuyMeACoffeeButton: React.FC = () => {
   return (
     <button
       onClick={handleClick}
-      className=" ml-4 bg-stone-300 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out mb-4 md:mb-0 w-full md:w-auto flex items-center justify-center"
+      className="bg-stone-300 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out mb-4 md:mb-0 w-full md:w-auto flex items-center justify-center md:ml-4 mt-4 md:mt-0"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
