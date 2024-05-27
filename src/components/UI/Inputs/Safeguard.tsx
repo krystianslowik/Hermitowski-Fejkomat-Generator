@@ -30,15 +30,16 @@ export const SafeguardInput = ({
   };
 
   return (
-    <div className="relative flex flex-col flex-grow p-4 border border-gray-300 bg-gray-50 rounded-lg shadow min-h-[120px] max-h-[245px] overflow-hidden justify-between">
+    <div className="relative flex flex-col flex-grow p-4 border border-gray-300 bg-gray-50 rounded-lg shadow min-h-[120px] max-h-full overflow-hidden justify-between">
       <div className="mb-2">
         <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
         <div className="w-full text-sm text-gray-500">
           {i18n(`${whatField}_description`)}
         </div>
       </div>
-      <div className="overflow-auto align-middle max-h-[180px]">
-        {Object.keys(templates).length > 0 ? (
+
+      {Object.keys(templates).length > 0 ? (
+        <div className="overflow-auto align-middle max-h-[180px]">
           <div className="flex flex-wrap justify-start items-center p-4 border bg-gray-50 rounded-lg shadow my-2">
             {Object.values(templates).some((value) => value > 0) &&
               Object.entries(templates).map(([troopType, troopCount]) =>
@@ -65,7 +66,15 @@ export const SafeguardInput = ({
               {i18n("removeTemplate")}
             </button>
           </div>
-        ) : (
+        </div>
+      ) : (
+        <>
+          {" "}
+          <div className="p-4 my-2 rounded bg-gray-200 text-center">
+            <span className="text-gray-500 font-bold">
+              {i18n("noTemplatesAdded")}
+            </span>
+          </div>
           <div
             className="flex flex-wrap justify-start items-center p-4 border bg-stone-500  hover:bg-stone-600 rounded-lg shadow my-2 cursor-pointer"
             onClick={() => setIsModalOpen(true)}
@@ -74,8 +83,8 @@ export const SafeguardInput = ({
               {i18n("addTemplate")}
             </span>
           </div>
-        )}
-      </div>
+        </>
+      )}
 
       <Modal
         isOpen={isModalOpen}
