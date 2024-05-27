@@ -33,54 +33,70 @@ export const TroopsInput = ({
   };
 
   return (
-    <div className=" relative flex max-h-[245px] min-h-[120px] flex-grow flex-col justify-between overflow-hidden rounded-lg border border-gray-300 bg-gray-50 p-4 shadow">
+    <div className=" relative flex max-h-full min-h-[120px] flex-grow flex-col justify-between overflow-hidden rounded-lg border border-gray-300 bg-gray-50 p-4 shadow">
       <div className="mb-2">
         <span className="mb-1 text-lg font-bold">{i18n(whatField)}</span>
         <div className="w-full text-sm text-gray-500">
           {i18n(`${whatField}_description`)}
         </div>
       </div>
-      <div className="overflow-auto align-middle max-h-[180px]">
-        {templates.map((template, index) => (
-          <div
-            key={index}
-            className="my-2 flex flex-wrap items-center justify-start rounded-lg border bg-gray-50 p-4 shadow"
-          >
-            {Object.keys(template).map((troopType) => {
-              const key = troopType as keyof Troops;
-              const troopCount = template[key] ?? 0; // fallback to 0 if undefined
-              return troopCount > 0 ? (
-                <div
-                  key={troopType}
-                  className="p-2 m-1 rounded bg-gray-100 text-center"
-                >
-                  <div className="flex flex-col items-center text-xs">
-                    <img
-                      src={troopIcons[troopType]}
-                      alt={i18n(troopType)}
-                      width={20}
-                    />
-                    <span className="font-bold "> {troopCount}</span>
-                  </div>
-                </div>
-              ) : null;
-            })}
-            <button
-              className="ml-auto text-red-500 hover:text-red-700"
-              onClick={() => removeTemplate(index)}
-            >
-              {i18n("removeTemplate")}
-            </button>
+      <div className="overflow-auto align-middle max-h-[140px]">
+        {templates.length === 0 ? (
+          <div className="p-4 my-2 rounded bg-gray-200 text-center">
+            <span className="text-gray-500 font-bold">
+              {i18n("noTemplatesAdded")}
+            </span>
           </div>
-        ))}
-        <div
-          className="flex flex-wrap justify-start items-center p-4 border bg-stone-500  hover:bg-stone-600 rounded-lg shadow my-2 cursor-pointer"
-          onClick={() => setIsModalOpen(true)}
-        >
-          <span className="text-white w-full text-center">
-            {i18n("addTemplate")}
-          </span>
-        </div>
+        ) : (
+          templates.map((template, index) => (
+            <div
+              key={index}
+              className="my-2 flex flex-wrap items-center justify-start rounded-lg border bg-gray-50 p-4 shadow"
+            >
+              {Object.keys(template).length === 0 ? (
+                <div className="p-4 m-2 rounded bg-gray-200 text-center">
+                  <span className="text-gray-500 font-bold">
+                    No troops available
+                  </span>
+                </div>
+              ) : (
+                Object.keys(template).map((troopType) => {
+                  const key = troopType as keyof Troops;
+                  const troopCount = template[key] ?? 0; // fallback to 0 if undefined
+                  return troopCount > 0 ? (
+                    <div
+                      key={troopType}
+                      className="p-2 m-1 rounded bg-gray-100 text-center"
+                    >
+                      <div className="flex flex-col items-center text-xs">
+                        <img
+                          src={troopIcons[troopType]}
+                          alt={i18n(troopType)}
+                          width={20}
+                        />
+                        <span className="font-bold"> {troopCount}</span>
+                      </div>
+                    </div>
+                  ) : null;
+                })
+              )}
+              <button
+                className="ml-auto text-red-500 hover:text-red-700"
+                onClick={() => removeTemplate(index)}
+              >
+                {i18n("removeTemplate")}
+              </button>
+            </div>
+          ))
+        )}
+      </div>
+      <div
+        className="flex flex-wrap justify-start items-center p-4 border bg-stone-500  hover:bg-stone-600 rounded-lg shadow my-2 cursor-pointer"
+        onClick={() => setIsModalOpen(true)}
+      >
+        <span className="text-white w-full text-center">
+          {i18n("addTemplate")}
+        </span>
       </div>
 
       <Modal

@@ -196,6 +196,10 @@ const translations: TranslationMap = {
     pl: "Kup mi kawkie!",
     en: "Buy me coffee",
   },
+  noTemplatesAdded: {
+    pl: "Nie dodano szablonu",
+    en: "No template(s) added",
+  },
 };
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
