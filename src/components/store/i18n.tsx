@@ -200,6 +200,26 @@ const translations: TranslationMap = {
     pl: "Nie dodano szablonu",
     en: "No template(s) added",
   },
+  thread_id: {
+    en: "Thread ID",
+    pl: "ID wątku",
+  },
+  page: {
+    en: "Page",
+    pl: "Strona",
+  },
+  spoiler_name: {
+    en: "Spoiler Name",
+    pl: "Nazwa spoilera",
+  },
+  time_to_live_s: {
+    en: "Time to Live (seconds)",
+    pl: "Czas życia (sekundy)",
+  },
+  forum_config_description: {
+    en: "Forum configuration settings.",
+    pl: "Ustawienia konfiguracji forum.",
+  },
 };
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
