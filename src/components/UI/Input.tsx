@@ -13,6 +13,7 @@ import { Troops } from "../../types/HermitowskiFejkomat.types";
 import { TroopsInput } from "./Inputs/TroopsTemplate";
 import { SafeguardInput } from "./Inputs/Safeguard";
 import { DateRangesInput } from "./Inputs/DateRanges";
+import { ForumConfig } from "./Inputs/ForumConfig";
 
 type InputProps = {
   valueToSet: (key: FejkomatKeys, value: any) => void;
@@ -91,7 +92,13 @@ export const Input = ({
 
   const inputChangeHandler = (
     whatField: FejkomatKeys,
-    newValue: string | boolean | Troops | Troops[] | string[]
+    newValue:
+      | string
+      | boolean
+      | Troops
+      | Troops[]
+      | string[]
+      | { [key: string]: any }
   ): void => {
     console.log("Field: ", whatField, "Value: ", newValue);
     setValue(newValue);
@@ -167,6 +174,12 @@ export const Input = ({
             inputChangeHandler={inputChangeHandler}
           />
         )}
+        {whatField === "forum_config" && (
+          <ForumConfig
+            whatField={whatField}
+            inputChangeHandler={inputChangeHandler}
+          />
+        )}
         {!smallInputs.has(whatField) &&
           !booleanInputs.has(whatField) &&
           !numberInputs.has(whatField) &&
@@ -174,6 +187,7 @@ export const Input = ({
           whatField !== "troops_templates" &&
           whatField !== "date_ranges" &&
           whatField !== "safeguard" &&
+          whatField !== "forum_config" &&
           whatField !== "fill_troops" && <Placeholder whatField={whatField} />}
       </div>
     </>
